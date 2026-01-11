@@ -1,4 +1,4 @@
-module.exports = function(eleventyConfig) {
+export default function(eleventyConfig) {
     // Reload page when changes made to .scss, .css, and .js files
     eleventyConfig.addWatchTarget('./src/scss/');
     eleventyConfig.addWatchTarget('./src/js/');

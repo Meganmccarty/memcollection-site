@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-require('dotenv').config();
-const fs = require('fs');
-const path = require('path');
+import { config } from 'dotenv';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+config();
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // return any files matching the directory (non-recursively)
 const getEntryPoints = (directory) => fs.readdirSync(path.join(__dirname, directory))
@@ -11,7 +16,7 @@ const getEntryPoints = (directory) => fs.readdirSync(path.join(__dirname, direct
         [file.split('.')[0]]: `./${directory}/${file}`,
     }), {});
 
-module.exports = {
+export default {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     entry: () => getEntryPoints('src/js'),
     module: {

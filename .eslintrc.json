@@ -26,6 +26,7 @@
         "quotes": ["error", "single"],
         "@typescript-eslint/quotes": ["error", "single"],
         "semi": ["error", "always"],
-        "@typescript-eslint/semi": ["error", "always"]
+        "@typescript-eslint/semi": ["error", "always"],
+        "@typescript-eslint/no-explicit-any": "off"
     }
 }
