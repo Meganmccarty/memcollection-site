@@ -39,15 +39,15 @@ export function transformData(data: Array<object>) {
                 </span>
             </div>
             <div class="label-taxonomy">
-                ${label.taxon_json.name
+                ${label.taxon.name
                     ? `
                         <span>
                             ${label.genus
-                                ? `<i>${label.taxon_json.name}</i>`
-                                : label.taxon_json.name}
+                                ? `<i>${label.taxon.name}</i>`
+                                : label.taxon.name}
                         </span>
                         <span>
-                            ${label.taxon_json.authority}
+                            ${label.taxon.authority}
                         </span>
                     `
                     : ''}

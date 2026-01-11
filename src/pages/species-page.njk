@@ -5,37 +5,40 @@ pagination:
     alias: page
     addAllPagesToCollections: true
 eleventyComputed:
-    title: "{{ page.get_binomial }} | MEMC"
-    description: "The detail page for the order {{ page.get_binomial }}"
+    title: "{{ page.title }} | MEMC"
+    description: "The detail page for the order {{ page.title }}"
 layout: layout.njk
 css: ['rel=stylesheet href=/css/species-page.css']
 js: [
     'defer src=/js/species-page.js type=module',
     'defer src=/js/species-page.legacy.js nomodule'
 ]
-permalink: "/orders/{{ page.order.name.toLowerCase() }}/families/{{ page.family.name.toLowerCase() }}/species/{{ page.title }}/"
+permalink: "/orders/{{ page.order.name.toLowerCase() }}/families/{{ page.family.name.toLowerCase() }}/species/{{ page.slug }}/"
 ---
 
 <h1>
-    <i>{{ page.get_binomial }}</i>&nbsp;&nbsp;{{ page.species.authority }} 
+    <i>{{ page.title }}</i>&nbsp;&nbsp;{{ page.species.authority }} 
     {% if page.species.common_name %}
         – {{ page.species.common_name }}
     {% endif %}
 </h1>
 
-{% if page.insect_images.length > 0 %}
+{% set featuredImage = insectImages | findFeaturedBySpecies(page.title) %}
+{% set allImages = insectImages | findAllBySpecies(page.title) %}
+
+{% if allImages.length > 0 %}
     <h2 id="image-gallery">Image gallery</h2>
     <div class="image-gallery-container">
         <figure class="active-image fade-in">
-            <img alt="{{ page.insect_images[0].alt_text }}" class="{{ page.insect_images[0].stage }} {{ page.insect_images[0].sex }} {{ page.insect_images[0].status }}" src="{{ page.insect_images[0].get_image_url }}" />
-            <figcaption>{{ page.insect_images[0].caption | safe }}</figcaption>
+            <img alt="{{ featuredImage.alt_text }}" class="{{ featuredImage.stage }} {{ featuredImage.sex }} {{ featuredImage.status }}" src="{{ featuredImage.file }}" />
+            <figcaption>{{ featuredImage.description | safe }}</figcaption>
         </figure>
         <div class="image-thumbnails">
-            {% for image in page.insect_images %}
+            {% for image in allImages %}
                 {% if loop.index === 1 %}
-                    <button><img alt="{{ image.alt_text }}" class="active {{ image.stage }} {{ image.sex }} {{ image.status }}" data-caption="{{ image.caption }}" src="{{ image.get_image_url }}" /></button>
+                    <button><img alt="{{ image.alt_text }}" class="active {{ image.stage }} {{ image.sex }} {{ image.status }}" data-desc="{{ image.description }}" src="{{ image.file }}" /></button>
                 {% else %}
-                    <button><img alt="{{ image.alt_text }}" class="{{ image.stage }} {{ image.sex }} {{ image.status }}" data-caption="{{ image.caption }}" src="{{ image.get_image_url }}" /></button>
+                    <button><img alt="{{ image.alt_text }}" class="{{ image.stage }} {{ image.sex }} {{ image.status }}" data-desc="{{ image.description }}" src="{{ image.file }}" /></button>
                 {% endif %}
             {% endfor %}
         </div>

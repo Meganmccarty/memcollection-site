@@ -25,8 +25,9 @@ permalink: "/orders/{{ order.name.toLowerCase() }}/"
         {% if family.order.name === order.name %}
             <li>
                 <a href="/orders/{{ order.name.toLowerCase() }}/families/{{ family.name.toLowerCase() }}/">
-                    {% if family.get_image_url %}
-                        <img alt="{{ family.alt_text }}" src="{{ family.get_image_url }}" />
+                    {% set featuredImage = insectImages | findFeaturedByFamily(family.name) %}
+                    {% if featuredImage %}
+                        <img alt="{{ featuredImage.alt_text }}" src="{{ featuredImage.file }}" />
                     {% else %}
                         <img alt="" src="/assets/placeholder.webp" />
                         <span class="placeholder-label" id="{{ family.name }}">No image</span>

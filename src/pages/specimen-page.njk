@@ -24,13 +24,17 @@ tag: specimenPage
 
 <h1>
     {{ specimen.usi }}: 
-    {% if specimen.taxon_json.common_name %}{{ specimen.taxon_json.common_name }} {% endif %} 
+    {% if specimen.taxon.common_name %}{{ specimen.taxon.common_name }} {% endif %} 
     {% if specimen.subspecies or specimen.species %}
-        (<i><a href="/orders/{{ specimen.order.name.toLowerCase() }}/families/{{ specimen.family.name.toLowerCase() }}/species/{{ specimen.genus.name.toLowerCase() }}-{{ specimen.species.name.toLowerCase() }}">{{ specimen.taxon_json.name }}</a></i>)
+        (<i>
+            <a href="/orders/{{ specimen.order.name.toLowerCase() }}/families/{{ specimen.family.name.toLowerCase() }}/species/{{ specimen.genus.name.toLowerCase() }}-{{ specimen.species.name.toLowerCase() }}">
+                {% if specimen.taxon.trinomial %}{{ specimen.taxon.trinomial }}{% elif specimen.taxon.binomial %}{{ specimen.taxon.binomial }}{% else %}{{ specimen.taxon.name }}{% endif %}
+            </a>
+        </i>)
     {% elif specimen.genus %}
-        (<i>{{ specimen.taxon_json.name }}</i>)
-    {% elif specimen.taxon_json.name %}
-        ({{ specimen.taxon_json.name }})
+        (<i>{{ specimen.taxon.name }}</i>)
+    {% elif specimen.taxon.name %}
+        ({{ specimen.taxon.name }})
     {% else %}
     {% endif %}
 </h1>
@@ -54,46 +58,50 @@ tag: specimenPage
             <th>Specimen Number</th>
             <td>{{ specimen.usi }}</td>
         </tr>
-        {% if specimen.taxon_json.name %}
+        {% if specimen.taxon.name %}
         <tr>
             <th>Taxon</th>
             {% if specimen.subspecies or specimen.species %}
-                <td class="italics" id="taxon"><a href="/orders/{{ specimen.order.name.toLowerCase() }}/families/{{ specimen.family.name.toLowerCase() }}/species/{{ specimen.genus.name.toLowerCase() }}-{{ specimen.species.name.toLowerCase() }}">{{ specimen.taxon_json.name }}</a></td>
+                <td class="italics" id="taxon">
+                    <a href="/orders/{{ specimen.order.name.toLowerCase() }}/families/{{ specimen.family.name.toLowerCase() }}/species/{{ specimen.genus.name.toLowerCase() }}-{{ specimen.species.name.toLowerCase() }}">
+                        {% if specimen.taxon.trinomial %}{{ specimen.taxon.trinomial }}{% elif specimen.taxon.binomial %}{{ specimen.taxon.binomial }}{% else %}{{ specimen.taxon.name }}{% endif %}
+                    </a>
+                </td>
             {% elif specimen.genus %}
-                <td class="italics" id="taxon">{{ specimen.taxon_json.name }}</td>
+                <td class="italics" id="taxon">{{ specimen.taxon.name }}</td>
             {% else %}
-                <td id="taxon">{{ specimen.taxon_json.name }}</td>
+                <td id="taxon">{{ specimen.taxon.name }}</td>
             {% endif %}
         </tr>
         {% endif %}
-        {% if specimen.taxon_json.authority %}
+        {% if specimen.taxon.authority %}
         <tr>
             <th>Authority</th>
-            <td>{{ specimen.taxon_json.authority }}</td>
+            <td>{{ specimen.taxon.authority }}</td>
         </tr>
         {% endif %}
-        {% if specimen.taxon_json.common_name %}
+        {% if specimen.taxon.common_name %}
         <tr>
             <th>Common Name</th>
-            <td>{{ specimen.taxon_json.common_name }}</td>
+            <td>{{ specimen.taxon.common_name }}</td>
         </tr>
         {% endif %}
-        {% if specimen.taxon_json.p3 %}
+        {% if specimen.taxon.p3 %}
         <tr>
             <th>P3 Number</th>
-            <td>{{ specimen.taxon_json.p3 }}</td>
+            <td>{{ specimen.taxon.p3 }}</td>
         </tr>
         {% endif %}
-        {% if specimen.taxon_json.mona %}
+        {% if specimen.taxon.mona %}
         <tr>
             <th>MONA Number</th>
-            <td>{{ specimen.taxon_json.mona }}</td>
+            <td>{{ specimen.taxon.mona }}</td>
         </tr>
         {% endif %}
-        {% if specimen.display_determiner %}
+        {% if specimen.determiner %}
         <tr>
             <th>Determiner</th>
-            <td>{{ specimen.display_determiner }}</td>
+            <td>{{ specimen.determiner.first_name }} {{ specimen.determiner.last_name }}</td>
         </tr>
         {% endif %}
         {% if specimen.determined_year %}
@@ -122,7 +130,7 @@ tag: specimenPage
         {% endif %}
         <tr>
             <th>Preparer</th>
-            <td>{{ specimen.display_preparer }}</td>
+            <td>{{ specimen.preparer.first_name }} {{ specimen.preparer.last_name }}</td>
         </tr>
     </table>
     <table aria-labelledby="collecting-event-info">
@@ -142,7 +150,7 @@ tag: specimenPage
         {% if specimen.county %}
         <tr>
             <th>County</th>
-            <td>{{ specimen.county.name }}</td>
+            <td>{{ specimen.county.full_name }}</td>
         </tr>
         {% endif %}
         {% if specimen.locality %}
@@ -175,7 +183,7 @@ tag: specimenPage
         </tr>
         <tr>
             <th>Collector(s)</th>
-            <td>{{ specimen.display_collectors }}</td>
+            <td>{{ specimen.collectors }}</td>
         </tr>
         {% if specimen.method %}
         <tr>

@@ -30,6 +30,39 @@ export default function(eleventyConfig) {
     //     document.body.appendChild(script);`;
     // }
 
+    eleventyConfig.addNunjucksFilter(
+        "findFeaturedByFamily",
+        function (images, familyName) {
+            if (!Array.isArray(images)) return null;
+
+            return images.find(
+                img => img.family === familyName && img.featured_family
+            ) || null;
+        }
+    );
+
+    eleventyConfig.addNunjucksFilter(
+        "findFeaturedBySpecies",
+        function (images, speciesName) {
+            if (!Array.isArray(images)) return null;
+
+            return images.find(
+                img => img.species_binomial === speciesName && img.featured_species
+            ) || null;
+        }
+    );
+
+    eleventyConfig.addNunjucksFilter(
+        "findAllBySpecies",
+        function (images, speciesName) {
+            if (!Array.isArray(images)) return null;
+
+            return images.filter(
+                img => img.species_binomial === speciesName
+            ) || null;
+        }
+    );
+
     return {
         dir: {
             input: 'src/pages',
