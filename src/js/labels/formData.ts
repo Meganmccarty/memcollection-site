@@ -74,7 +74,7 @@ export function handleSubmit(event: SubmitEvent) {
     let formString = formArray.join('');
     formString = formString.slice(0, formString.length - 1);
 
-    const url = `https://api.meganemccartycollection.com/api/specimens/specimen-records?${formString}`;
+    const url = `https://api.memcollection.com/api/v2/specimen-records/?${formString}&limit=10000`;
     fetch(url)
         .then((response) => response.json())
         .then((data) => transformData(data));
