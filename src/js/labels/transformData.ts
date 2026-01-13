@@ -84,8 +84,8 @@ export function transformData(data: any) {
                 </span>
                 ${determiner}
             </div>
-        </div>
-    `});
+        </div>`;
+    });
 
     const labelOutput = document.getElementById('label-output');
     if (labelOutput && labelOutput.previousElementSibling) {

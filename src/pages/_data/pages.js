@@ -13,4 +13,4 @@ export default async function getSpeciesPages() {
     });
 
     return data.items;
-};
+}

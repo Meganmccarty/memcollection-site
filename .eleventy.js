@@ -1,3 +1,5 @@
+import "./env.js";
+
 export default function(eleventyConfig) {
     // Reload page when changes made to .scss, .css, and .js files
     eleventyConfig.addWatchTarget('./src/scss/');

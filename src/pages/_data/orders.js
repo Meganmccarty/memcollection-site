@@ -13,4 +13,4 @@ export default async function getOrders() {
     });
 
     return data.items;
-};
+}

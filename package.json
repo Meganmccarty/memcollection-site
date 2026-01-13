@@ -7,7 +7,7 @@
     "start": "run-p eleventy:dev sass:dev js:dev js:dev:legacy",
     "build": "run-s eleventy:build sass:build js:build js:build:legacy",
     "eleventy:dev": "NODE_ENV=development eleventy --serve",
-    "eleventy:build": "NODE_ENV=production eleventy",
+    "eleventy:build": "NODE_ENV=development eleventy",
     "sass:dev": "sass --watch --embed-source-map src/scss:dist/css",
     "sass:build": "sass --no-source-map --style=compressed src/scss:dist/css",
     "clean": "rm -rf dist",
@@ -36,12 +36,15 @@
     "not supports es6-module"
   ],
   "dependencies": {
+    "@11ty/eleventy-fetch": "^5.1.1",
+    "cypress": "^15.8.2",
+    "cypress-axe": "^1.7.0",
+    "dotenv": "^17.2.3",
     "leaflet": "^1.9.4",
     "vercel": "^50.1.6"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
-    "@11ty/eleventy-fetch": "^5.1.1",
     "@11ty/eleventy-server-browsersync": "^1.0.2",
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
@@ -54,9 +57,6 @@
     "axe-core": "^4.11.1",
     "babel-jest": "^30.2.0",
     "babel-loader": "^10.0.0",
-    "cypress": "^15.8.2",
-    "cypress-axe": "^1.7.0",
-    "dotenv": "^17.2.3",
     "esbuild": "^0.27.2",
     "eslint": "^8.57.1",
     "eslint-config-airbnb": "^19.0.4",

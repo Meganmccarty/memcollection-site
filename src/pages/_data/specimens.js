@@ -5,7 +5,9 @@ import { config } from 'dotenv';
 config({ path: `.env.${process.env.NODE_ENV}` });
 
 export default async function getSpecimens() {
-    const url = `${process.env.API_BASE_URL}/specimen-records/?limit=10000`;
+    // Need to set a limit when this fetch is executed in the CI; otherwise, it fails
+    const limit = process.env.CI ? 20 : 10000;
+    const url = `${process.env.API_BASE_URL}/specimen-records/?limit=${limit}`;
 
     const data = await EleventyFetch(url, {
         duration: '1d',
@@ -13,4 +15,4 @@ export default async function getSpecimens() {
     });
 
     return data.items;
-};
+}
