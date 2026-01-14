@@ -8,7 +8,7 @@ This is the website for my personal entomology collection. It started as a way f
 
 I chose to build this site using [Eleventy](https://www.11ty.dev/), a static site generator (SSG). While it may not be the best choice for a website powered by an API, I got tired of working with client-side JavaScript libraries/frameworks. And while many JS frameworks are now shifting to server-side rendering (e.g., Next.js), I just wanted something simple. Something fast. And Eleventy fit that perfectly for me.
 
-The backend is powered by my custom API, which uses headless [Wagtail](https://wagtail.org/). You can view the [API repo here](https://github.com/Meganmccarty/memcollection-api).
+The backend is powered by my custom API, which uses [headless Wagtail](https://wagtail.org/headless/). You can view the [API repo here](https://github.com/Meganmccarty/memcollection-api).
 
 ## Getting Started
 Given that this site relies on my custom API, this repo will probably be of limited use to everyone except me. However, if you are interested in playing around with the code, just click the "Clone" button to copy the project onto your machine.
