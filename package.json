@@ -5,9 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "run-p eleventy:dev sass:dev js:dev js:dev:legacy",
+    "start:ci": "run-p eleventy:ci sass:dev js:dev js:dev:legacy",
     "build": "run-s eleventy:build sass:build js:build js:build:legacy",
+    "build:prod": "run-s eleventy:build:prod sass:build js:build js:build:legacy",
+    "build:ci": "run-s eleventy:build:ci sass:build js:build js:build:legacy",
     "eleventy:dev": "NODE_ENV=development eleventy --serve",
+    "eleventy:ci": "NODE_ENV=ci eleventy --serve",
     "eleventy:build": "NODE_ENV=development eleventy",
+    "eleventy:build:prod": "NODE_ENV=production eleventy",
+    "eleventy:build:ci": "NODE_ENV=ci eleventy",
     "sass:dev": "sass --watch --embed-source-map src/scss:dist/css",
     "sass:build": "sass --no-source-map --style=compressed src/scss:dist/css",
     "clean": "rm -rf dist",
@@ -40,8 +46,7 @@
     "cypress": "^15.8.2",
     "cypress-axe": "^1.7.0",
     "dotenv": "^17.2.3",
-    "leaflet": "^1.9.4",
-    "vercel": "^50.1.6"
+    "leaflet": "^1.9.4"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",

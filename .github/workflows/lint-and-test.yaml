@@ -25,10 +25,9 @@ jobs:
         run: npm run test:jest
       - name: run e2e tests
         env:
-          NODE_ENV: development
+          NODE_ENV: ci
           API_BASE_URL: ${{ secrets.API_BASE_URL }}
-          CI: ${{ secrets.CI }}
         uses: cypress-io/github-action@v5
         with:
-          build: npm run build
-          start: npm start
+          build: npm run build:ci
+          start: npm run start:ci
