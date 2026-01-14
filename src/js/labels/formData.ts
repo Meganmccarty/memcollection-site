@@ -58,7 +58,13 @@ export function addChangeEvent(
     });
 }
 
-export function handleSubmit(event: SubmitEvent) {
+export async function getApiUrl(): Promise<{ API_URL: string }> {
+    const response = await fetch('/api-url.js');
+    const data = await response.json();
+    return data;
+}
+
+export async function handleSubmit(event: SubmitEvent) {
     event.preventDefault();
 
     /* Turn the form data object into an array of strings
@@ -74,7 +80,9 @@ export function handleSubmit(event: SubmitEvent) {
     let formString = formArray.join('');
     formString = formString.slice(0, formString.length - 1);
 
-    const url = `https://api.meganemccartycollection.com/api/specimens/specimen-records?${formString}`;
+    const apiUrl = await getApiUrl();
+    const url = `${apiUrl.API_URL}/specimen-records/?${formString}&limit=10000`;
+
     fetch(url)
         .then((response) => response.json())
         .then((data) => transformData(data));

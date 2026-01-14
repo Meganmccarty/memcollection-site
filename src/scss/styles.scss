@@ -26,8 +26,8 @@
     /* ----- BLACKS ----- */
     --black: rgb(24 24 27);
     --off-black: rgb(39 39 42);
-    --black-20-percent: rgba(0 0 0 / 20%);
-    --black-90-percent: rgba(0 0 0 / 90%);
+    --black-20-percent: rgb(0 0 0 / 20%);
+    --black-90-percent: rgb(0 0 0 / 90%);
 
     /* ----- GRAYS ---- */
     --dark-gray-level-1: rgb(63 63 70);
@@ -127,7 +127,6 @@ footer {
 }
 
 .visually-hidden:not(:focus-visible) {
-    clip: rect(0 0 0 0);
     clip-path: inset(50%);
     height: 1px;
     overflow: hidden;

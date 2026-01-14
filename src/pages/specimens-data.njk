@@ -4,10 +4,10 @@ permalink: "/specimens-data.js"
 [
     {% for specimen in specimens %}{ 
         "usi": "{{ specimen.usi }}",
-        "taxon": "{{ specimen.taxon_json.name }}",
+        "taxon": {% if specimen.taxon.trinomial %}"{{ specimen.taxon.trinomial }}",{% elif specimen.taxon.binomial %}"{{ specimen.taxon.binomial }}",{% else %}"{{ specimen.taxon.name }}",{% endif %}
         "italics": {% if specimen.genus.name %}true,{% else %}false,{% endif %}
         "identified": {% if specimen.species.name %}true,{% else %}false,{% endif %}
-        "common_name": "{{ specimen.taxon_json.common_name | safe }}",
+        "common_name": "{{ specimen.taxon.common_name | safe }}",
         "country": "{{ specimen.country.abbr }}",
         "state": "{{ specimen.state.name }}",
         "state_abbr": "{{ specimen.state.abbr }}",
