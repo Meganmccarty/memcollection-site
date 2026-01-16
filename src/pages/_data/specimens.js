@@ -5,6 +5,25 @@ import { config } from 'dotenv';
 config({ path: `.env.${process.env.NODE_ENV}` });
 
 export default async function getSpecimens() {
+    const sleep = (ms) => (
+        /* eslint-disable-next-line no-promise-executor-return */
+        new Promise((resolve) => setTimeout(resolve, ms))
+    );
+
+    async function fetchWithRetry(url, options, retries = 3) {
+        try {
+            /* eslint-disable @typescript-eslint/return-await */
+            return await EleventyFetch(url, options);
+        } catch (err) {
+            if (retries <= 0) {
+                throw err;
+            }
+
+            await sleep(500 * (4 - retries)); // exponential-ish backoff
+            return fetchWithRetry(url, options, retries - 1);
+        }
+    }
+
     let allItems = [];
     let currentOffset = 0; // what index the results start at (0 = 1)
     // Need to set a limit when this fetch is executed in the CI; otherwise, it fails
@@ -15,7 +34,7 @@ export default async function getSpecimens() {
         const url = `${process.env.API_BASE_URL}/specimen-records/?offset=${currentOffset}&limit=${limit}`;
 
         /* eslint-disable no-await-in-loop */
-        const data = await EleventyFetch(url, {
+        const data = await fetchWithRetry(url, {
             duration: '1d',
             type: 'json',
         });
@@ -23,8 +42,7 @@ export default async function getSpecimens() {
         allItems = allItems.concat(data.items);
         currentOffset += limit;
 
-        /* eslint-disable-next-line no-promise-executor-return */
-        await new Promise((r) => setTimeout(r, 250));
+        await sleep(250);
     }
 
     return allItems;
