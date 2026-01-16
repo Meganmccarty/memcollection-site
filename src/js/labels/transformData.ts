@@ -1,26 +1,63 @@
-export function transformData(data: Array<object>) {
-    const transformedData = data.map((label: any) => `
-        <div class="single-label">
+export function transformData(data: any) {
+    const labels = data.items;
+    const transformedData = labels.map((label: any) => {
+        const country = label.country ? `${label.country.abbr}:` : '';
+        const state = label.state ? `${label.state.abbr}:` : '';
+        const county = label.county ? label.county.full_name : '';
+
+        const range = label.locality && label.locality.range ? label.locality.range : '';
+        const town = label.locality && label.locality.town ? label.locality.town : '';
+
+        const locality = label.locality && label.locality.name ? label.locality.name : '';
+
+        const gpsLatitude = label.gps && label.gps.latitude ? `${label.gps.latitude}°N` : '';
+        const gpsLongitude = label.gps && label.gps.longitude ? `${Math.abs(label.gps.longitude)}°W` : '';
+        const elevation = label.gps && label.gps.elevation ? `${label.gps.elevation}m` : '';
+
+        const temperature = label.temperature ? `${label.temp_C} (${label.temp_F})` : '';
+
+        let taxon;
+
+        if (label.taxon) {
+            if (label.taxon.trinomial) {
+                taxon = `<i>${label.taxon.trinomial}</i>`;
+            } else if (label.taxon.binomial) {
+                taxon = `<i>${label.taxon.binomial}</i>`;
+            } else if (label.genus && label.genus.name) {
+                taxon = `<i>${label.taxon.name}</i>`;
+            } else {
+                taxon = label.taxon.name;
+            }
+        } else {
+            taxon = '';
+        }
+
+        const authority = label.taxon && label.taxon.authority ? label.taxon.authority : '';
+        const determiner = label.determiner
+            ? `<span>${label.determiner.first_name} ${label.determiner.last_name} ${label.determined_year}</span>`
+            : '';
+
+        return `<div class="single-label">
             <div class="label-locality">
                 <span>
-                    ${label.country ? `${label.country.abbr}:` : ''}
-                    ${label.state ? `${label.state.abbr}:` : ''}
-                    ${label.county ? label.county.county_abbr : ''}
+                    ${country}
+                    ${state}
+                    ${county}
                 </span>
                 <span>
-                    ${label.locality ? label.locality.range : ''}
-                    ${label.locality ? label.locality.town : ''}
+                    ${range}
+                    ${town}
                 </span>
                 <span>
-                    ${label.locality ? label.locality.name : ''}
+                    ${locality}
                 </span>
                 <span>
-                    ${label.gps && label.gps.latitude ? `${label.gps.latitude}°N` : ''}
-                    ${label.gps && label.gps.longitude ? `${Math.abs(label.gps.longitude)}°W` : ''}
-                    ${label.gps && label.gps.elevation ? `${label.gps.elevation}m` : ''}
+                    ${gpsLatitude}
+                    ${gpsLongitude}
+                    ${elevation}
                 </span>
                 <span>
-                    ${label.collected_date} ${label.display_collectors}
+                    ${label.collected_date} ${label.collectors}
                 </span>
                 <span class="label-usi">
                     ${label.usi}
@@ -31,7 +68,7 @@ export function transformData(data: Array<object>) {
                     ${label.method}
                 </span>
                 <span>
-                    ${label.weather} ${label.temp_C} ${label.temp_F ? `(${label.temp_F})` : ''}
+                    ${label.weather} ${temperature}
                     ${label.time_of_day}
                 </span>
                 <span>
@@ -39,24 +76,16 @@ export function transformData(data: Array<object>) {
                 </span>
             </div>
             <div class="label-taxonomy">
-                ${label.taxon_json.name
-                    ? `
-                        <span>
-                            ${label.genus
-                                ? `<i>${label.taxon_json.name}</i>`
-                                : label.taxon_json.name}
-                        </span>
-                        <span>
-                            ${label.taxon_json.authority}
-                        </span>
-                    `
-                    : ''}
-                ${label.display_determiner
-                    ? `<span>${label.display_determiner} ${label.determined_year}</span>`
-                    : ''}
+                <span>
+                    ${taxon}
+                </span>
+                <span>
+                    ${authority}
+                </span>
+                ${determiner}
             </div>
-        </div>
-    `);
+        </div>`;
+    });
 
     const labelOutput = document.getElementById('label-output');
     if (labelOutput && labelOutput.previousElementSibling) {

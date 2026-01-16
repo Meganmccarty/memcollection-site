@@ -1,4 +1,6 @@
-module.exports = function(eleventyConfig) {
+import "./env.js";
+
+export default function(eleventyConfig) {
     // Reload page when changes made to .scss, .css, and .js files
     eleventyConfig.addWatchTarget('./src/scss/');
     eleventyConfig.addWatchTarget('./src/js/');
@@ -29,6 +31,39 @@ module.exports = function(eleventyConfig) {
     //     script.setAttribute('src', '${src}');
     //     document.body.appendChild(script);`;
     // }
+
+    eleventyConfig.addNunjucksFilter(
+        "findFeaturedByFamily",
+        function (images, familyName) {
+            if (!Array.isArray(images)) return null;
+
+            return images.find(
+                img => img.family === familyName && img.featured_family
+            ) || null;
+        }
+    );
+
+    eleventyConfig.addNunjucksFilter(
+        "findFeaturedBySpecies",
+        function (images, speciesName) {
+            if (!Array.isArray(images)) return null;
+
+            return images.find(
+                img => img.species_binomial === speciesName && img.featured_species
+            ) || null;
+        }
+    );
+
+    eleventyConfig.addNunjucksFilter(
+        "findAllBySpecies",
+        function (images, speciesName) {
+            if (!Array.isArray(images)) return null;
+
+            return images.filter(
+                img => img.species_binomial === speciesName
+            ) || null;
+        }
+    );
 
     return {
         dir: {

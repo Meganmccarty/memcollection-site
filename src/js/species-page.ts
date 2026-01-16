@@ -6,7 +6,7 @@ export function setActiveImage(thumbnail: Element) {
     const src = image?.getAttribute('src');
     const alt = image?.getAttribute('alt');
     const classes = image?.getAttribute('class');
-    const caption = image?.getAttribute('data-caption');
+    const caption = image?.getAttribute('data-desc');
 
     if (src) {
         activeImage?.setAttribute('src', src);

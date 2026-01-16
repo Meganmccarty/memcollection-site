@@ -145,11 +145,11 @@ js: [
                 <tr>
                     <td><a href="/specimens/{{ specimen.usi.toLowerCase() }}">{{ specimen.usi }}</a></td>
                     {% if specimen.genus.name %}
-                        <td class="italics">{{ specimen.taxon_json.name }}</td>
+                        <td class="italics">{{ specimen.taxon.name }}</td>
                     {% else %}
-                        <td>{{ specimen.taxon_json.name }}</td>
+                        <td>{{ specimen.taxon.name }}</td>
                     {% endif %}
-                    <td>{{ specimen.taxon_json.common_name }}</td>
+                    <td>{{ specimen.taxon.common_name }}</td>
                     <td>{{ specimen.country.abbr }}</td>
                     <td>{{ specimen.state.name }}</td>
                     <td>{{ specimen.locality.name }}</td>

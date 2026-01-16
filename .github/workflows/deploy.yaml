@@ -2,33 +2,50 @@ name: Deploy
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
-
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    branches: [main]
 
 jobs:
-  lint-and-test:
-    uses: ./.github/workflows/lint-and-test.yaml
   deploy:
-    needs: [lint-and-test]
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: '22.x'
+          cache: npm
+
       - name: Install dependencies
-        run: npm install --immutable
-      - name: Install Vercel CLI
-        run: npm install -g vercel
-      - name: Get Vercel settings
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Build site
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Deploy to production
-        run: vercel deploy --prod --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+        run: npm ci
+
+      - name: Build Eleventy
+        run: npm run build:prod
+        env:
+          NODE_ENV: production
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+
+      - name: Verify build output
+        run: |
+          test -d dist
+          test -f dist/index.html
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.NFS_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.NFS_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy
+        run: |
+          ssh ${{ secrets.NFS_USERNAME }}@${{ secrets.NFS_HOST }} << 'EOF'
+            set -e
+            cd ${{ secrets.NFS_SITE_DIR }}
+            find . -mindepth 1 -maxdepth 1 ! -name '.*' -exec rm -rf {} +
+          EOF
+
+          rsync -avz dist/ \
+            ${{ secrets.NFS_USERNAME }}@${{ secrets.NFS_HOST }}:${{ secrets.NFS_SITE_DIR }}

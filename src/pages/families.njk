@@ -70,9 +70,10 @@ permalink: "/orders/{{ family.order.name.toLowerCase() }}/families/{{ family.nam
             {% for page in pages | sort(attribute='species.p3') %}
                 {% if page.subfamily.name === subfamily.name %}
                     <li>
-                        <a href="/orders/{{ family.order.name.toLowerCase() }}/families/{{ family.name.toLowerCase() }}/species/{{ page.title }}">
-                            {% if page.insect_images[0] %}
-                                <img alt="{{ page.insect_images[0].alt_text }}" src="{{ page.insect_images[0].get_image_url }}" />
+                        <a href="/orders/{{ family.order.name.toLowerCase() }}/families/{{ family.name.toLowerCase() }}/species/{{ page.slug }}">
+                            {% set featuredImage = insectImages | findFeaturedBySpecies(page.title) %}
+                            {% if featuredImage %}
+                                <img alt="{{ featuredImage.alt_text }}" src="{{ featuredImage.file }}" />
                             {% else %}
                                 <img alt="" src="/assets/placeholder.webp" />
                                 <span class="placeholder-label" id="{{ page.genus.name }}-{{ page.species.name }}">No image</span>
