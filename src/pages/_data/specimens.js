@@ -22,7 +22,9 @@ export default async function getSpecimens() {
 
         allItems = allItems.concat(data.items);
         currentOffset += limit;
-        setTimeout(() => {}, 250);
+
+        /* eslint-disable-next-line no-promise-executor-return */
+        await new Promise((r) => setTimeout(r, 250));
     }
 
     return allItems;
