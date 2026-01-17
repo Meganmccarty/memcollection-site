@@ -1,0 +1,66 @@
+---
+permalink: "/specimens-data-labels.js"
+---
+[
+    {% for specimen in specimens %}{
+        {% if specimen.order %}"order": "{{ specimen.order.name }}",{% endif %}
+        {% if specimen.family %}"family": "{{ specimen.family.name }}",{% endif %}
+        {% if specimen.subfamily %}"subfamily": "{{ specimen.subfamily.name }}",{% endif %}
+        {% if specimen.tribe %}"tribe": "{{ specimen.tribe.name }}",{% endif %}
+        {% if specimen.genus %}"genus": "{{ specimen.genus.name }}",{% endif %}
+        {% if specimen.species %}"species": "{{ specimen.species.name }}",{% endif %}
+        {% if specimen.subspecies %}"subspecies": "{{ specimen.subspecies.name }}",{% endif %}
+        {% if specimen.taxon %}"taxon": {
+            "name": "{{ specimen.taxon.name }}",
+            {% if specimen.taxon.trinomial %}"trinomial": "{{ specimen.taxon.trinomial }}",{% elif specimen.taxon.binomial %}"binomial": "{{ specimen.taxon.binomial }}",{% endif %}
+            "common_name": "{{ specimen.taxon.common_name | safe }}",
+            "authority": "{{ specimen.taxon.authority | safe }}"
+        },{% endif %}
+        "determiner_firstname": "{{ specimen.determiner.first_name | safe }}",
+        "determiner_lastname": "{{ specimen.determiner.last_name | safe }}",
+        {% if specimen.determined_year %}
+        "determined_year": {{ specimen.determined_year }},{% endif %}
+        "usi": "{{ specimen.usi | safe }}",
+        "preparer_firstname": "{{ specimen.preparer.first_name | safe }}",
+        "preparer_lastname": "{{ specimen.preparer.last_name | safe }}",
+        "preparation": "{{ specimen.preparation }}",
+        "preparation_date": "{{ specimen.preparation_date }}",
+        "sex": "{{ specimen.sex }}",
+        "stage": "{{ specimen.stage }}",
+        "labels_printed": {% if specimen.labels_printed == null %}false,{% else %}{{ specimen.labels_printed }},{% endif %}
+        "labeled": {% if specimen.labeled == null %}false,{% else %}{{ specimen.labeled }},{% endif %}
+        "photographed": {% if specimen.photographed == null %}false,{% else %}{{ specimen.photographed }},{% endif %}
+        "identified": {% if specimen.species.name %}true,{% else %}false,{% endif %}
+        "country": "{{ specimen.country.name }}",
+        "country_abbr": "{{ specimen.country.abbr }}",
+        "state": "{{ specimen.state.name }}",
+        "state_abbr": "{{ specimen.state.abbr }}",
+        "county": "{{ specimen.county.name }}",
+        "county_abbr": "{{ specimen.county.abbr }}",
+        "county_full_name": "{{ specimen.county.full_name }}",
+        "locality": "{{ specimen.locality.name | safe }}",
+        "locality_range": "{{ specimen.locality.range }}",
+        "locality_town": "{{ specimen.locality.town | safe }}",
+        "gps_lat": "{{ specimen.gps.latitude }}",
+        "gps_long": "{{ specimen.gps.longitude }}",
+        "elevation": "{{ specimen.gps.elevation }}",
+        "elevation_meters": "{{ specimen.gps.elevation_meters }}",
+        "collecting_trip": "{{ specimen.collecting_trip.name | safe }}",
+        "day": {% if specimen.day %}{{ specimen.day }},{% else %}null,{% endif %}
+        "month": "{{ specimen.month }}",
+        "year": {% if specimen.year %}{{ specimen.year }},{% else %}null,{% endif %}
+        "collected_date": "{{ specimen.collected_date }}",
+        "collector_firstname": "{% for collector in specimen.collector %}{{ collector.first_name | safe }}, {% endfor %}",
+        "collector_lastname": "{% for collector in specimen.collector %}{{ collector.last_name | safe }}, {% endfor %}",
+        "collectors": "{{ specimen.collectors | safe }}",
+        "method": "{{ specimen.method }}",
+        "weather": "{{ specimen.weather }}",
+        "temperature": "{{ specimen.temperature }}",
+        "temp_F": "{{ specimen.temp_F | safe }}",
+        "temp_C": "{{ specimen.temp_C | safe }}",
+        "time_of_day": "{{ specimen.time_of_day | safe }}",
+        "habitat": {{ specimen.habitat.trimEnd() | dump | safe }},
+        "notes": {{ specimen.notes.trimEnd() | dump | safe }}
+    }{% if loop.last == false %},{% endif %}
+    {% endfor %}
+]

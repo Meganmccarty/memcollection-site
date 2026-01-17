@@ -9,18 +9,20 @@ js: [
 ]
 ---
 
-<h1>Generate Labels</h1>
-<p>
-    The form below is for generating labels that can be printed and attached to actual specimens.
-    Use the form to create labels for a subset of specimens,
-    or leave all fields blank to generate a label for each specimen in the database.
-</p>
-<br />
-<p>
-    Note: The generated labels are optimized for printing from <em>Firefox only</em>.
-    Chrome cannot render fonts below 4pt, and Safari is not as precise when dealing with decimals (e.g., 2.75pt).
-</p>
-<form aria-labelledby="label-label" id="label-form">
+<div class="no-print">
+    <h1>Generate Labels</h1>
+    <p>
+        The form below is for generating labels that can be printed and attached to actual specimens.
+        Use the form to create labels for a subset of specimens,
+        or leave all fields blank to generate a label for each specimen in the database.
+    </p>
+    <br />
+    <p>
+        Note: The generated labels are optimized for printing from <em>Firefox only</em>.
+        Chrome cannot render fonts below 4pt, and Safari is not as precise when dealing with decimals (e.g., 2.75pt).
+    </p>
+</div>
+<form aria-labelledby="label-label" class="no-print" id="label-form">
     <span hidden id="label-label">Label Generator</span>
     <fieldset>
         <legend>Taxonomy</legend>
@@ -272,6 +274,8 @@ js: [
     </div>
 </form>
 
-<h2>Output</h2>
-<p>There are currently no labels. Use the form above to create some!</p>
+
+<h2 class="no-print">Output</h2>
+<p class="no-print">There are currently no labels. Use the form above to create some!</p>
+
 <div id="label-output"></div>
