@@ -1,18 +1,24 @@
-export function transformData(data: any) {
-    const labels = data.items;
+import { SpecimenLabel } from '../types/specimen-label';
+
+/**
+ * Transforms specimen data into labels that can be printed
+ */
+export function transformData(data: SpecimenLabel[]) {
+    const labelOutput = document.getElementById('label-output');
+    if (!labelOutput || !labelOutput.previousElementSibling) return;
+
+    // Clear out old labels
+    labelOutput.innerHTML = '';
+
+    const labels = data;
+
     const transformedData = labels.map((label: any) => {
-        const country = label.country ? `${label.country.abbr}:` : '';
-        const state = label.state ? `${label.state.abbr}:` : '';
-        const county = label.county ? label.county.full_name : '';
+        const country = label.country ? `${label.country_abbr}:` : '';
+        const state = label.state ? `${label.state_abbr}:` : '';
+        const county = label.county_full_name;
 
-        const range = label.locality && label.locality.range ? label.locality.range : '';
-        const town = label.locality && label.locality.town ? label.locality.town : '';
-
-        const locality = label.locality && label.locality.name ? label.locality.name : '';
-
-        const gpsLatitude = label.gps && label.gps.latitude ? `${label.gps.latitude}°N` : '';
-        const gpsLongitude = label.gps && label.gps.longitude ? `${Math.abs(label.gps.longitude)}°W` : '';
-        const elevation = label.gps && label.gps.elevation ? `${label.gps.elevation}m` : '';
+        const gpsLatitude = label.gps_lat ? `${label.gps_lat}°N` : '';
+        const gpsLongitude = label.gps_long ? `${Math.abs(label.gps_long)}°W` : '';
 
         const temperature = label.temperature ? `${label.temp_C} (${label.temp_F})` : '';
 
@@ -23,7 +29,7 @@ export function transformData(data: any) {
                 taxon = `<i>${label.taxon.trinomial}</i>`;
             } else if (label.taxon.binomial) {
                 taxon = `<i>${label.taxon.binomial}</i>`;
-            } else if (label.genus && label.genus.name) {
+            } else if (label.genus) {
                 taxon = `<i>${label.taxon.name}</i>`;
             } else {
                 taxon = label.taxon.name;
@@ -32,9 +38,8 @@ export function transformData(data: any) {
             taxon = '';
         }
 
-        const authority = label.taxon && label.taxon.authority ? label.taxon.authority : '';
-        const determiner = label.determiner
-            ? `<span>${label.determiner.first_name} ${label.determiner.last_name} ${label.determined_year}</span>`
+        const determiner = label.determiner_firstname && label.determiner_lastname
+            ? `<span>${label.determiner_firstname} ${label.determiner_lastname} ${label.determined_year}</span>`
             : '';
 
         return `<div class="single-label">
@@ -45,16 +50,16 @@ export function transformData(data: any) {
                     ${county}
                 </span>
                 <span>
-                    ${range}
-                    ${town}
+                    ${label.locality_range}
+                    ${label.locality_town}
                 </span>
                 <span>
-                    ${locality}
+                    ${label.locality}
                 </span>
                 <span>
                     ${gpsLatitude}
                     ${gpsLongitude}
-                    ${elevation}
+                    ${label.elevation_meters}
                 </span>
                 <span>
                     ${label.collected_date} ${label.collectors}
@@ -80,24 +85,15 @@ export function transformData(data: any) {
                     ${taxon}
                 </span>
                 <span>
-                    ${authority}
+                    ${label.taxon ? label.taxon.authority : ''}
                 </span>
                 ${determiner}
             </div>
         </div>`;
     });
 
-    const labelOutput = document.getElementById('label-output');
-    if (labelOutput && labelOutput.previousElementSibling) {
-        // Clear out old labels
-        labelOutput.innerHTML = '';
+    labelOutput.innerHTML = transformedData.join('');
 
-        // Update number of labels generated
-        labelOutput.previousElementSibling.innerHTML = `${transformedData.length} labels generated for the above data`;
-
-        // Add each label to the output element
-        transformedData.forEach((label: any) => {
-            labelOutput.innerHTML += label;
-        });
-    }
+    // Tell the user how many labels were generated
+    labelOutput.previousElementSibling.innerHTML = `${transformedData.length} labels generated for the above data`;
 }

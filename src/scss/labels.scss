@@ -251,6 +251,13 @@
 }
 
 @media print {
+    div.no-print,
+    #label-form.no-print,
+    h2.no-print,
+    p.no-print {
+        display: none;
+    }
+
     #label-output {
         display: block;
         overflow-wrap: normal;
