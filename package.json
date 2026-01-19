@@ -43,7 +43,7 @@
   ],
   "dependencies": {
     "@11ty/eleventy-fetch": "^5.1.1",
-    "cypress": "^15.8.2",
+    "cypress": "^15.9.0",
     "cypress-axe": "^1.7.0",
     "dotenv": "^17.2.3",
     "leaflet": "^1.9.4"
