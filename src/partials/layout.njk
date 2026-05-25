@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="dark light" />
 
         <title>{{ title or eleventyComputed.title }}</title>
         <meta name="description" content="{{ description }}" />
@@ -11,7 +12,8 @@
         <link rel="alternate icon" href="/assets/favicon.png" type="image/png" />
         <link rel="mask-icon" href="/assets/favicon.svg" />
 
-        <link rel="apple-touch-icon" href="/assets/maskable_icon.png" />
+        <link rel="apple-touch-icon" href="/assets/maskable_icon_light.png" media="(prefers-color-scheme: no-preference)" />
+        <link rel="apple-touch-icon" href="/assets/maskable_icon_dark.png" media="(prefers-color-scheme: dark)" />
 
         <link rel="manifest" href="/assets/manifest.json" />
         <meta name="theme-color" content="#000000" />

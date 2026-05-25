@@ -3,10 +3,10 @@ title: Specimens | MEMC
 description: The specimens page for the MEM Collection site.
 layout: layout.njk
 css: [
-    'rel=stylesheet href=/css/specimens.css',
     'rel=stylesheet href=https://unpkg.com/leaflet@1.9.4/dist/leaflet.css
         integrity=sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=
-        crossorigin='
+        crossorigin=',
+    'rel=stylesheet href=/css/specimens.css'
 ]
 js: [
     'defer src=/js/specimens.js type=module',
@@ -71,11 +71,7 @@ js: [
             <button id="reset-map-button">Reset Map</button>
             <section aria-hidden="true" id="legend">
                 <img alt="" height="24" src="/assets/uxwing/map-pin-icon-blue.svg" width="16.984" /><span>Identified</span>
-                <img alt="" height="24" src="/assets/uxwing/map-pin-icon-pink.svg" width="16.984" /><span>Unidentified</span>
-                {# <span class="legend-circle" id="circle-identified"></span>
-                Identified
-                <span class="legend-circle" id="circle-unidentified"></span>
-                Unidentified #}
+                <img alt="" height="24" src="/assets/uxwing/map-pin-icon-yellow.svg" width="16.984" /><span>Unidentified</span>
             </section>
         </div>
     </section>

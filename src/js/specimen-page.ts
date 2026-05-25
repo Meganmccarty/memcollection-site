@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const specimenMap = L.map(
             'specimen-map',
-            { scrollWheelZoom: true },
+            {
+                preferCanvas: true,
+                scrollWheelZoom: true,
+            },
         ).setView([lat, long], 13);
 
         // Set up the default tile layer (street view)
@@ -64,6 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
             specimenMap.setView([lat, long], 13);
         });
 
+        const bottomLeftControls = document.getElementById('bottom-left-controls');
+        const bottomLeft = document.querySelector('div.leaflet-bottom.leaflet-left');
+
+        if (bottomLeft && bottomLeftControls) {
+            bottomLeftControls.removeAttribute('hidden');
+            bottomLeft.append(bottomLeftControls);
+        }
+
         let icon: L.Icon;
 
         const taxonTableCell = document.getElementById('taxon');
@@ -77,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } else {
             icon = L.icon({
-                iconUrl: '/assets/uxwing/map-pin-icon-pink.svg',
+                iconUrl: '/assets/uxwing/map-pin-icon-yellow.svg',
                 iconSize: [25, 85],
                 iconAnchor: [12.5, 60],
             });

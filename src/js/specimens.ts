@@ -23,7 +23,7 @@ export function getSpecimensWithGPS(specimens: Specimen[]): Specimen[] {
 
 /**
  * Adds a marker on the Leaflet map representing where a specimen was collected
- * @param icon - The icon added to the map (either blue or pink)
+ * @param icon - The icon added to the map (either blue or yellow)
  * @param specimens - An array containing all of the specimens that need markers
  * @param markerGroup - The Leaflet layer group containing all of the markers
  */
@@ -95,7 +95,7 @@ export function createSpecimenMarkers(
 ): void {
     // Create Leaflet icons for identified and unidentified specimens
     const blueIcon: L.Icon = createMarker('/assets/uxwing/map-pin-icon-blue.svg');
-    const pinkIcon: L.Icon = createMarker('/assets/uxwing/map-pin-icon-pink.svg');
+    const yellowIcon: L.Icon = createMarker('/assets/uxwing/map-pin-icon-yellow.svg');
 
     // Create some empty arrays that will hold identified and unidentified specimens
     const identified: Specimen[] = [];
@@ -118,9 +118,9 @@ export function createSpecimenMarkers(
 
     // Now, add the new map markers for the identified and unidentified specimens
     addSpecimenMarker(blueIcon, identified, markerGroup);
-    addSpecimenMarker(pinkIcon, unidentified, markerGroup);
+    addSpecimenMarker(yellowIcon, unidentified, markerGroup);
     // addSpecimenMarker(blue, identified, markerGroup);
-    // addSpecimenMarker(pink, unidentified, markerGroup);
+    // addSpecimenMarker(yellow, unidentified, markerGroup);
 }
 
 export function sortRows(

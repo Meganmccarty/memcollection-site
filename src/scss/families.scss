@@ -1,7 +1,7 @@
 @use 'shared-styles/taxon';
 
 #empty-family {
-    color: var(--off-white);
+    color: var(--w-color-text-context);
     margin: 2rem 0 0 1.5rem;
 }
 
@@ -33,9 +33,9 @@ ul.taxonomy-list {
 
 #toc {
     align-items: center;
-    background-color: var(--dark-gray-level-2);
-    border: 0.0625rem solid var(--off-black);
-    color: var(--off-white);
+    background-color: var(--w-color-surface-dashboard-panel);
+    border: 0.0.625rem solid var(--w-color-border-furniture);
+    color: var(--w-color-text-context);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,7 +69,7 @@ ul.taxonomy-list {
     margin: 0 auto;
     width: fit-content;
 
-    img {
+    svg {
         height: auto;
         margin: 0 0.25rem 0 0;
         width: 0.5rem;
