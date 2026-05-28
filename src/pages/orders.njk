@@ -29,8 +29,7 @@ permalink: "/orders/{{ order.name.toLowerCase() }}/"
                     {% if featuredImage %}
                         <img alt="{{ featuredImage.alt_text }}" src="{{ featuredImage.file }}" />
                     {% else %}
-                        <img alt="" src="/assets/placeholder.webp" />
-                        <span class="placeholder-label" id="{{ family.name }}">No image</span>
+                        {% include "placeholder.njk" %}
                     {% endif %}
                     <span class="taxon-name">{{ family.name }}</span>
                 </a>

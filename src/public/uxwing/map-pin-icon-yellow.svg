@@ -10,10 +10,18 @@
     vector-effect="non-scaling-stroke"
     xml:space="preserve"
 >
+    <!-- Red color -->
+    <!-- <style type="text/css">
+        <![CDATA[
+            .st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FF7A88;}
+            .st1{fill-rule:evenodd;clip-rule:evenodd;fill:#BE2D2D;stroke:#E0E0E0;stroke-width:0.5rem;}
+        ]]>
+    </style> -->
+    <!-- Yellow color -->
     <style type="text/css">
         <![CDATA[
-            .st0{fill-rule:evenodd;clip-rule:evenodd;fill:#77D2ED;}
-            .st1{fill-rule:evenodd;clip-rule:evenodd;fill:#1C7894;stroke:#E0E0E0;stroke-width:0.5rem;}
+            .st0{fill-rule:evenodd;clip-rule:evenodd;fill:#E69000;}
+            .st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FFDF83;stroke:#6E6E6E;stroke-width:0.5rem;}
         ]]>
     </style>
     <g>

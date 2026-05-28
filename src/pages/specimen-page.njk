@@ -9,10 +9,10 @@ eleventyComputed:
     description: "The detail page for the specimen {{ specimen.usi }}"
 layout: layout.njk
 css: [
-    'rel=stylesheet href=/css/specimen-page.css',
     'rel=stylesheet href=https://unpkg.com/leaflet@1.9.4/dist/leaflet.css
         integrity=sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=
-        crossorigin='
+        crossorigin=',
+        'rel=stylesheet href=/css/specimen-page.css'
 ]
 js: [
     'defer src=/js/specimen-page.js type=module',
@@ -228,11 +228,12 @@ tag: specimenPage
 <h2 id="map-label">Map</h2>
 
 <section aria-labelledby="map-label" id="specimen-map">
-    <button id="reset-map-button">Reset Map</button>
-    <section aria-labelledby="map-legend" id="legend">
-        <span hidden id="map-legend">Specimen Map Legend</span>
-        <img alt="" src="/assets/uxwing/map-pin-icon-blue.svg" /><span>Identified</span>
-        <img alt="" src="/assets/uxwing/map-pin-icon-pink.svg" /><span>Unidentified</span>
-    </section>
+    <div hidden id="bottom-left-controls">
+        <button id="reset-map-button">Reset Map</button>
+        <section aria-hidden="true" id="legend">
+            <img alt="" height="24" src="/assets/uxwing/map-pin-icon-blue.svg" width="16.984" /><span>Identified</span>
+            <img alt="" height="24" src="/assets/uxwing/map-pin-icon-yellow.svg" width="16.984" /><span>Unidentified</span>
+        </section>
+    </div>
 </section>
 {% endif %}

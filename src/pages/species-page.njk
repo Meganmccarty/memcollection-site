@@ -23,6 +23,7 @@ permalink: "/orders/{{ page.order.name.toLowerCase() }}/families/{{ page.family.
     {% endif %}
 </h1>
 
+<!--
 {% set featuredImage = insectImages | findFeaturedBySpecies(page.title) %}
 {% set allImages = insectImages | findAllBySpecies(page.title) %}
 
@@ -44,7 +45,9 @@ permalink: "/orders/{{ page.order.name.toLowerCase() }}/families/{{ page.family.
         </div>
     </div>
 {% endif %}
+-->
 
+<!--
 <h2>Taxonomy</h2>
 <ol>
     <li class="order">Order: <a href="/orders/{{ page.order.name.toLowerCase() }}">{{ page.order.name }}</a> {{ page.order.authority }}</li>
@@ -133,9 +136,11 @@ permalink: "/orders/{{ page.order.name.toLowerCase() }}/families/{{ page.family.
     <h2>References</h2>
     {{ page.display_refs | safe }}
 {% endif %}
+-->
 
-
+<!--
 {# <dialog id="full-image">
     <button>Close</button>
     <button></button>
 </dialog> #}
+-->

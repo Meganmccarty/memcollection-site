@@ -1,0 +1,202 @@
+section#map,
+section#specimen-map {
+    height: 80vh;
+    margin: 0 1.25rem;
+    z-index: 0;
+
+    /* ----- Plus/minus buttons ----- */
+    .leaflet-top.leaflet-left {
+        .leaflet-bar {
+            border: none;
+
+            a {
+                background-color: var(--w-color-surface-button-default);
+                border: 0.125rem solid var(--w-color-white);
+                color: var(--w-color-text-button);
+    
+                &:hover {
+                    background-color: var(--w-color-surface-button-hover);
+                    cursor: pointer;
+                }
+    
+                &:focus-visible {
+                    outline: var(--w-color-focus) 0.125rem solid;
+                }
+            }
+        }
+    }
+
+    /* ----- Layers button ----- */
+    .leaflet-top.leaflet-right {
+        .leaflet-control-layers {
+            background-color: var(--w-color-surface-button-default);
+            border: 0.125rem solid var(--w-color-white);
+            
+            .leaflet-control-layers-toggle {
+                &:focus-visible {
+                    outline: var(--w-color-focus) 0.125rem solid;
+                    outline-offset: 0.125rem;
+                }
+            }
+            
+            label {
+                color: var(--w-color-text-button);
+            }
+
+            input {
+                &:focus-visible {
+                    outline: 0.125rem solid var(--w-color-white);
+                }
+            }
+        }
+    }
+
+    /* ---- Reset Button and Legend ---- */
+    .leaflet-bottom.leaflet-left {
+        pointer-events: all;
+    }
+
+    #bottom-left-controls {
+        display: flex;
+        margin: 0 0 0.625rem 0.625rem;
+    }
+
+    #reset-map-button {
+        background-clip: padding-box;
+        background-color: var(--w-color-surface-button-default);
+        border: 0.125rem solid var(--w-color-white);
+        border-radius: 0.25rem;
+        color: var(--w-color-text-button);
+        margin: 0 0.625rem 0 0;
+        padding: 0.5rem;
+
+        &:hover {
+            background-color: var(--w-color-surface-button-hover);
+            cursor: pointer;
+        }
+
+        &:focus-visible {
+            outline: var(--w-color-focus) 0.125rem solid;
+        }
+    }
+
+    #legend {
+        align-items: center;
+        background-clip: padding-box;
+        background-color: var(--w-color-surface-dashboard-panel);
+        border: 0.125rem solid var(--w-color-border-furniture);
+        border-radius: 0.25rem;
+        color: var(--w-color-text-context);
+        display: flex;
+        flex-direction: row;
+        height: 2rem;
+        padding: 0 0.75rem 0 0.25rem;
+
+        img {
+            height: 1.5rem;
+            margin: 0 0.25rem 0 0.75rem;
+            width: 1.0615rem;
+        }
+    }
+}
+
+/* ----- Upper right layers button ----- */
+.leaflet-retina .leaflet-control-layers-toggle {
+    background-image: url("/assets/uxwing/layers-icon.svg") !important;
+}
+
+/* ----- Bottom right attribution ----- */
+.leaflet-container .leaflet-control-attribution {
+    background-color: var(--w-color-surface-dashboard-panel) !important; 
+    color: var(--w-color-text-context);
+    opacity: 1 !important;
+
+    a {
+        color: var(--w-color-text-link-default) !important;
+        text-decoration: underline;
+
+
+        &:focus-visible,
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:hover {
+            color: var(--w-color-text-link-hover) !important;
+        }
+
+        &:focus-visible {
+            outline: var(--w-color-focus) 0.125rem solid;
+        }
+    }
+}
+
+/* ----- Pin popup container ----- */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background-color: var(--w-color-surface-status-label);
+    color: var(--w-color-text-context);
+
+    a {
+        color: var(--w-color-text-link-default) !important;
+        text-decoration: underline;
+
+
+        &:focus-visible,
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:hover {
+            color: var(--w-color-text-link-hover) !important;
+        }
+
+        &:focus-visible {
+            outline: var(--w-color-focus) 0.125rem solid;
+        }
+    }
+}
+
+/* ----- Pin popup container close button ----- */
+.leaflet-container a.leaflet-popup-close-button {
+    color: var(--w-color-text-link-default) !important;
+
+    &:hover {
+        color: var(--w-color-text-link-hover) !important;
+    }
+
+    &:focus-visible {
+        outline: var(--w-color-focus) 0.125rem solid;
+    }
+}
+
+@media (max-width: 785px) {
+    section#map,
+    section#specimen-map {
+        #reset-map-button {
+            height: 2.25rem;
+            left: 3.5rem;
+            top: 0.625rem;
+        }
+
+        #legend {
+            left: 9.5rem;
+            top: 0.625rem;
+        }
+    }
+}
+
+@media (max-width: 460px) {
+    section#map,
+    section#specimen-map {
+        #legend {
+            flex-direction: column;
+            height: fit-content;
+            padding: 0.5rem;
+
+            img {
+                margin: 0;
+            }
+        }
+    }
+}

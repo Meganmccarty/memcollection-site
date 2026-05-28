@@ -1,3 +1,5 @@
+@use 'shared-styles/leaflet';
+
 #image-container {
     align-items: center;
     display: flex;
@@ -16,74 +18,19 @@
     min-height: 50vh;
 
     table {
-        background-color: var(--dark-gray-level-1);
-        border: 0.0625rem solid var(--light-green-level-2);
         margin: 0 1.5rem;
         width: 50%;
 
         tr {
             th {
-                background-color: var(--dark-green-level-3);
-                color: var(--white);
                 padding: 0 0.5rem 0 0;
                 text-align: right;
                 width: 25%;
             }
 
             td {
-                color: var(--white);
                 padding: 0 0 0 0.5rem;
-
-                &.italics {
-                    font-style: italic;
-                }
             }
-        }
-
-        tr:nth-child(even) {
-            td {
-                background-color: var(--dark-gray-level-2);
-            }
-        }
-    }
-}
-
-section#specimen-map {
-    height: 80vh;
-    margin: 0 1.25rem;
-    z-index: 0;
-
-    #reset-map-button {
-        background-clip: padding-box;
-        background-color: var(--white);
-        border: 0.125rem solid var(--black-20-percent);
-        border-radius: 0.25rem;
-        bottom: 0.625rem;
-        color: var(--black);
-        left: 0.625rem;
-        padding: 0.5rem;
-        position: absolute;
-        z-index: 500;
-    }
-
-    #legend {
-        align-items: center;
-        background-clip: padding-box;
-        background-color: var(--white);
-        border: 0.125rem solid var(--black-20-percent);
-        border-radius: 0.25rem;
-        bottom: 0.625rem;
-        display: flex;
-        flex-direction: row;
-        height: 2rem;
-        left: 6.5625rem;
-        padding: 0 0.75rem 0 0.25rem;
-        position: absolute;
-        z-index: 500;
-
-        img {
-            height: 1.5rem;
-            margin: 0 0.25rem 0 0.75rem;
         }
     }
 }
@@ -106,33 +53,6 @@ section#specimen-map {
         table {
             margin: 0.5rem 0;
             width: 100%;
-        }
-    }
-
-    section#specimen-map {
-        #reset-map-button {
-            height: 2.25rem;
-            left: 3.5rem;
-            top: 0.625rem;
-        }
-
-        #legend {
-            left: 9.5rem;
-            top: 0.625rem;
-        }
-    }
-}
-
-@media (max-width: 460px) {
-    section#specimen-map {
-        #legend {
-            flex-direction: column;
-            height: fit-content;
-            padding: 0.5rem;
-
-            img {
-                margin: 0;
-            }
         }
     }
 }

@@ -3,21 +3,17 @@
     <nav aria-labelledby="site-nav-label" id="navigation">
         <button aria-labelledby="open-menu-label" id="open-menu">
             <span hidden id="open-menu-label">Open menu</span>
-            <img alt="" height="16" src="/assets/uxwing/hamburger-menu-icon-white.svg" width="20" />
+            {% include "uxwing/uxwing-hamburger-menu-icon.njk" %}
         </button>
         <a href="/" id="home-link">
-            <picture>
-                <source type="image/webp" srcset="/assets/logo-white.webp">
-                <source type="image/png" srcset="/assets/logo-white.png">
-                <img alt="" height="29.6" width="40" />
-            </picture>
+            {% include "logo.njk" %}
             MEM Collection
         </a>
         <ul id="menu" role="list">
             <li class="first-list-item">
                 <button aria-labelledby="close-menu-label" id="close-menu">
                     <span hidden id="close-menu-label">Close menu</span>
-                    <img alt="" height="16" src="/assets/uxwing/hamburger-menu-icon-white.svg" width="20" />
+                    {% include "uxwing/uxwing-hamburger-menu-icon.njk" %}
                 </button>
             </li>
             <li>
@@ -55,6 +51,7 @@
         <label class="visually-hidden" for="search-input">Search</label>
         <input id="search-input" type="text" />
         <button aria-labelledby="search-button-label" id="search-button">
+            {% include "uxwing/uxwing-search-icon.njk" %}
             <span hidden id="search-button-label">Submit</span>
         </button>
     </form>

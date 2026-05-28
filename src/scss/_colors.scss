@@ -1,0 +1,97 @@
+/*
+    The following color scheme below was taken directly from Wagtail CMS. Because I use Wagtail for
+    my backend, I wanted the frontend to match the style for a more seamless user experience. Plus,
+    their color scheme meets WCAG 2.2 AA, so I don't have to worry about choosing inaccessible
+    color combinations. :)
+    https://docs.wagtail.org/en/v7.4.1/advanced_topics/customization/admin_templates.html#custom-user-interface-colors
+    https://contrast-grid.eightshapes.com/?version=1.1.0&background-colors=%23000000%2C%20black%0D%0A%23F6F6F8%2C%20grey-50%0D%0A%23E0E0E0%2C%20grey-100%0D%0A%23C8C8C8%2C%20grey-150%0D%0A%23929292%2C%20grey-200%0D%0A%235C5C5C%2C%20grey-400%0D%0A%23333333%2C%20grey-500%0D%0A%23262626%2C%20grey-600%0D%0A%23222222%2C%20grey-700%0D%0A%231D1D1D%2C%20grey-800%0D%0A%23FFFFFF%2C%20white%0D%0A%23261A4E%2C%20primary-200%0D%0A%232E1F5E%2C%20primary%0D%0A%23F2FCFC%2C%20secondary-50%0D%0A%2380D7D8%2C%20secondary-75%0D%0A%2300B0B1%2C%20secondary-100%0D%0A%23005B5E%2C%20secondary-400%0D%0A%23004345%2C%20secondary-600%0D%0A%23007D7E%2C%20secondary%0D%0A%23E2F5FC%2C%20info-50%0D%0A%2380B6C7%2C%20info-75%0D%0A%231D7792%2C%20info-100%0D%0A%23186076%2C%20info-125%0D%0A%23E0FBF4%2C%20positive-50%0D%0A%231B8666%2C%20positive-100%0D%0A%23FEF1F1%2C%20warning-50%0D%0A%23FDD074%2C%20warning-75%0D%0A%23FAA500%2C%20warning-100%0D%0A%23FEF0F0%2C%20critical-50%0D%0A%23FD5765%2C%20critical-100%0D%0A%23CA3B3B%2C%20critical-200&foreground-colors=%23000000%2C%20black%0D%0A%23F6F6F8%2C%20grey-50%0D%0A%23E0E0E0%2C%20grey-100%0D%0A%23C8C8C8%2C%20grey-150%0D%0A%23929292%2C%20grey-200%0D%0A%235C5C5C%2C%20grey-400%0D%0A%23333333%2C%20grey-500%0D%0A%23262626%2C%20grey-600%0D%0A%23222222%2C%20grey-700%0D%0A%231D1D1D%2C%20grey-800%0D%0A%23FFFFFF%2C%20white%0D%0A%23261A4E%2C%20primary-200%0D%0A%232E1F5E%2C%20primary%0D%0A%23F2FCFC%2C%20secondary-50%0D%0A%2380D7D8%2C%20secondary-75%0D%0A%2300B0B1%2C%20secondary-100%0D%0A%23005B5E%2C%20secondary-400%0D%0A%23004345%2C%20secondary-600%0D%0A%23007D7E%2C%20secondary%0D%0A%2380B6C7%2C%20info-75%0D%0A%231D7792%2C%20info-100%0D%0A%231B8666%2C%20positive-100%0D%0A%23FAA500%2C%20warning-100%0D%0A%23FD5765%2C%20critical-100%0D%0A%23CA3B3B%2C%20critical-200&es-color-form__tile-size=compact&es-color-form__show-contrast=aaa&es-color-form__show-contrast=aa&es-color-form__show-contrast=aa18
+*/
+
+:root {
+    /* Main colors */
+    --w-color-black: #000000; /* Shadows only */
+    --w-color-grey-800: #1D1D1D; /* Backgrounds for panels in dark theme */
+    --w-color-grey-700: #222222; /* Backgrounds for panels in dark theme */
+    --w-color-grey-600: #262626; /* Body copy, user content */
+    --w-color-grey-500: #333333; /* Panels, dividers in dark mode */
+    --w-color-grey-400: #5C5C5C; /* Help text, placeholders, meta text, neutral state indicators */
+    --w-color-grey-200: #929292; /* Dividers, button borders */
+    --w-color-grey-150: #C8C8C8; /* Field borders */
+    --w-color-grey-100: #E0E0E0; /* Dividers, panel borders */
+    --w-color-grey-50: #F6F6F8; /* Background for panels, row highlights */
+    --w-color-white: #FFFFFF; /* Page backgrounds, Panels, Button text */
+    --w-color-primary: #2E1F5E; /* Wagtail branding, Panels, Headings, Buttons, Labels */
+    --w-color-primary-200: #261A4E; /* Accent for elements used in conjunction with primary colour in sidebar */
+    --w-color-secondary: #007D7E; /* Primary buttons, action links */
+    --w-color-secondary-600: #004345; /* Hover states for two-tone buttons */
+    --w-color-secondary-400: #005B5E; /* Two-tone buttons, hover states */
+    --w-color-secondary-100: #00B0B1; /* UI element highlights over dark backgrounds */
+    --w-color-secondary-75: #80D7D8; /* UI element highlights over dark text */
+    --w-color-secondary-50: #F2FCFC; /* Button backgrounds, highlighted fields background */
+    --w-color-info-125: #186076; /* Hover background only, for information messages */
+    --w-color-info-100: #1D7792; /* Background and icons for information messages */
+    --w-color-info-75: #80B6C7; /* Info text in the dark theme */
+    --w-color-info-50: #E2F5FC; /* Background only, for information messages */
+    --w-color-positive-100: #1B8666; /* Positive states */
+    --w-color-positive-50: #E0FBF4; /* Background only, for positive states */
+    --w-color-warning-100: #FAA500; /* Background and icons for potentially dangerous states */
+    --w-color-warning-75: #FDD074; /* Background only, for potentially dangerous states, in enhanced-contrast theme */
+    --w-color-warning-50: #FFF5D8; /* Background only, for potentially dangerous states */
+    --w-color-critical-200: #CA3B3B; /* Dangerous actions or states (over light background), errors */
+    --w-color-critical-100: #FD5765; /* Dangerous actions or states (over dark background) */
+    --w-color-critical-50: #FEF0F0; /* Background only, for dangerous states */
+
+    /* Surfaces - General */
+    --w-color-surface-page: light-dark(var(--w-color-grey-50), var(--w-color-grey-600));
+    --w-color-surface-field: light-dark(var(--w-color-white), var(--w-color-grey-600));
+    --w-color-surface-field-inactive: light-dark(var(--w-color-grey-50), var(--w-color-grey-500));
+    --w-color-surface-header: light-dark(var(--w-color-grey-50), var(--w-color-grey-700));
+    --w-color-surface-menus: light-dark(var(--w-color-primary), var(--w-color-grey-800));
+    --w-color-surface-menu-item-active: light-dark(var(--w-color-primary-200), var(--w-color-grey-700));
+    --w-color-surface-tooltip: light-dark(var(--w-color-primary-200), var(--w-color-grey-500));
+    --w-color-surface-button-default: light-dark(var(--w-color-secondary), var(--w-color-secondary));
+    --w-color-surface-button-hover: light-dark(var(--w-color-secondary-400), var(--w-color-secondary-400));
+    --w-color-surface-button-inactive: light-dark(var(--w-color-grey-400), var(--w-color-grey-400));
+    --w-color-surface-button-outline-hover: light-dark(#F0FAFA, var(--w-color-grey-700));
+    --w-color-surface-button-critical-hover: light-dark(var(--w-color-critical-50), var(--w-color-grey-600));
+    --w-color-surface-status-label: light-dark(#E1F6FC, var(--w-color-grey-600));
+    --w-color-surface-info-panel: light-dark(#E1F6FC, #1C7792);
+    --w-color-surface-dashboard-panel: light-dark(var(--w-color-white), var(--w-color-grey-800));
+
+    /* Text */
+    --w-color-text-button: light-dark(var(--w-color-white), var(--w-color-white));
+    --w-color-text-label-menus-default: light-dark(#120C23, #120C23);
+    --w-color-text-label-menus-active: light-dark(var(--w-color-white), var(--w-color-white));
+    --w-color-text-label: light-dark(#2D1F5F, var(--w-color-grey-150));
+    --w-color-text-context: light-dark(var(--w-color-grey-600), var(--w-color-grey-50));
+    --w-color-text-meta: light-dark(var(--w-color-grey-400), var(--w-color-grey-150));
+    --w-color-text-placeholder: light-dark(var(--w-color-grey-400), var(--w-color-grey-200));
+    --w-color-text-link-default: light-dark(var(--w-color-secondary), #06B0B1);
+    --w-color-text-link-hover: light-dark(var(--w-color-secondary-400), var(--w-color-secondary-75));
+    --w-color-text-button-outline-default: light-dark(var(--w-color-secondary), #06B0B1);
+    --w-color-text-button-outline-hover: light-dark(var(--w-color-secondary-400), #06B0B1);
+    --w-color-text-highlight: light-dark(var(--w-color-secondary-75), var(--w-color-secondary-400));
+    --w-color-text-error: light-dark(#CB3A3B, var(--w-color-critical-100));
+    --w-color-text-button-critical-outline-hover: light-dark(#CB3A3B, var(--w-color-critical-50));
+    --w-color-text-status-label: light-dark(#1C7792, var(--w-color-info-75));
+    --w-color-text-link-info: light-dark(var(--w-color-secondary-400), var(--w-color-grey-50));
+
+    /* Icons */
+    --w-color-icon-primary: light-dark(#2D1F5F, var(--w-color-grey-150));
+    --w-color-icon-primary-hover: light-dark(var(--w-color-primary-200), var(--w-color-grey-50));
+    --w-color-icon-secondary: light-dark(var(--w-color-grey-400), var(--w-color-grey-150));
+    --w-color-icon-secondary-hover: light-dark(var(--w-color-primary-200), var(--w-color-grey-50));
+
+    /* Borders */
+    --w-color-border-furniture: light-dark(var(--w-color-grey-100), var(--w-color-grey-500));
+    --w-color-border-button-small-outline-default: light-dark(var(--w-color-grey-150), var(--w-color-grey-400));
+    --w-color-border-field-default: light-dark(var(--w-color-grey-150), var(--w-color-grey-400));
+    --w-color-border-field-inactive: light-dark(var(--w-color-grey-150), var(--w-color-grey-500));
+    --w-color-border-field-hover: light-dark(var(--w-color-grey-200), var(--w-color-grey-200));
+    --w-color-border-button-outline-default: light-dark(var(--w-color-secondary), #06B0B1);
+    --w-color-border-button-outline-hover: light-dark(var(--w-color-secondary-400), #06B0B1);
+
+    /* Misc */
+    --w-color-focus: light-dark(#05A885, #05A885);
+    --w-color-box-shadow-md: light-dark(#120C23, #120C23);
+}
