@@ -1,0 +1,31 @@
+{
+    "meta": {
+        "total_count": 3
+    },
+    "items": [
+        {
+            "id": 1,
+            "name": "Coleoptera",
+            "common_name": "Beetles",
+            "authority": "Linnaeus, 1758",
+            "date_created": "2025-06-14T02:07:42.179000Z",
+            "date_modified": "2025-06-14T02:07:42.179000Z"
+        },
+        {
+            "id": 2,
+            "name": "Hymenoptera",
+            "common_name": "Bees, Wasps, and Ants",
+            "authority": "Linnaeus, 1758",
+            "date_created": "2025-06-14T02:08:57.039000Z",
+            "date_modified": "2025-06-14T02:08:57.039000Z"
+        },
+        {
+            "id": 3,
+            "name": "Lepidoptera",
+            "common_name": "Butterflies and Moths",
+            "authority": "Linnaeus, 1758",
+            "date_created": "2024-11-17T00:37:27.071000Z",
+            "date_modified": "2024-11-17T00:37:27.071000Z"
+        }
+    ]
+}

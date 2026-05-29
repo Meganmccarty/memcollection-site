@@ -14,8 +14,18 @@ const getEntryPoints = (directory) => fs.readdirSync(path.join(__dirname, direct
         [file.split('.')[0]]: `./${directory}/${file}`,
     }), {});
 
+let environment;
+
+if (process.env.NODE_ENV === 'production') {
+    environment = 'production';
+} else if (process.env.NODE_ENV === 'ci') {
+    environment = 'ci';
+} else {
+    environment = 'development';
+}
+
 export default {
-    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+    mode: environment,
     entry: () => getEntryPoints('src/js'),
     module: {
         rules: [

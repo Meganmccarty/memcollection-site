@@ -602,6 +602,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Create a layerGroup for the markers (so that they can be cleared when filters are applied)
     const markers = L.layerGroup().addTo(map);
 
+    // Fix missing accessible name for leaflet layers "button"
+    const layersButton = document.querySelector('a.leaflet-control-layers-toggle');
+
+    if (layersButton) {
+        layersButton.ariaLabel = 'Map Layers';
+    }
+
     // Fetch the specimens
     const specimens: Specimen[] = await fetchSpecimens();
 
