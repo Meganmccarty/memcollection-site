@@ -108,7 +108,7 @@ export function addChangeEvent(
     });
 }
 
-let submitTimeout: number;
+let submitTimeout: NodeJS.Timeout;
 
 export async function handleSubmit(event: SubmitEvent, data: SpecimenLabel[]) {
     event.preventDefault();
