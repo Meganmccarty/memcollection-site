@@ -538,6 +538,7 @@ export function filterSpecimensInMapAndTable(
     inputCheckboxes: HTMLInputElement[],
     specimens: Specimen[],
     markers: L.LayerGroup,
+    currentURL: URL,
 ) {
     // Destructure the arrays containing the input fields and input checkboxes
     const [speciesInput, stateInput, dateInput]: HTMLInputElement[] = inputFields;
@@ -547,8 +548,16 @@ export function filterSpecimensInMapAndTable(
     const speciesValue = speciesInput.value.toLowerCase();
     const stateValue = stateInput.value.toLowerCase();
     const dateValue = dateInput.value.toString().toLowerCase();
-    const idInputChecked = idInput.checked;
-    const unidInputChecked = unidInput.checked;
+    const idInputChecked = !!idInput.checked;
+    const unidInputChecked = !!unidInput.checked;
+
+    currentURL.searchParams.set('species', speciesValue);
+    currentURL.searchParams.set('state', stateValue);
+    currentURL.searchParams.set('date', dateValue);
+    currentURL.searchParams.set('identified', idInputChecked.toString());
+    currentURL.searchParams.set('unidentified', unidInputChecked.toString());
+
+    window.history.replaceState({}, '', currentURL);
 
     // Create an array of filtered specimens based on the values from the filter form inputs
     const filteredSpecimens = filterSpecimens(
@@ -597,8 +606,29 @@ export function filterSpecimensInMapAndTable(
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+    const currentURL = new URL(window.location.href);
+
+    const latParam = currentURL.searchParams.get('lat');
+    const longParam = currentURL.searchParams.get('long');
+    const zoomParam = currentURL.searchParams.get('zoom');
+
     // Initialize a Leaflet map
-    const map = initializeLeafletMap(50.000, -104.180, 3);
+    let map;
+
+    if (latParam && longParam && zoomParam) {
+        map = initializeLeafletMap(
+            parseFloat(latParam),
+            parseFloat(longParam),
+            parseInt(zoomParam, 10),
+        );
+    } else {
+        map = initializeLeafletMap(50.000, -104.180, 3);
+        currentURL.searchParams.set('lat', '50.000');
+        currentURL.searchParams.set('long', '-104.180');
+        currentURL.searchParams.set('zoom', '3');
+        window.history.replaceState({}, '', currentURL);
+    }
+
     // Create a layerGroup for the markers (so that they can be cleared when filters are applied)
     const markers = L.layerGroup().addTo(map);
 
@@ -626,16 +656,58 @@ document.addEventListener('DOMContentLoaded', async () => {
     const tableHeaderBtnImages: NodeListOf<HTMLImageElement> = document.querySelectorAll('table thead tr th button img');
 
     // Initially filter the Leaflet map and table based on the empty filters form
-    if (speciesInput.value !== '' || stateInput.value !== '' || dateInput.value !== '') {
-        filterSpecimensInMapAndTable(
-            [speciesInput, stateInput, dateInput],
-            [idInput, unidInput],
-            specimens,
-            markers,
-        );
-    } else {
-        toggleLoader(false);
+    const speciesParam = currentURL.searchParams.get('species');
+    const stateParam = currentURL.searchParams.get('state');
+    const dateParam = currentURL.searchParams.get('date');
+    const identifiedParam = currentURL.searchParams.get('identified');
+    const unidentifiedParam = currentURL.searchParams.get('unidentified');
+
+    speciesInput.value = speciesParam ?? '';
+    stateInput.value = stateParam ?? '';
+    dateInput.value = dateParam ?? '';
+
+    if (
+        (identifiedParam === 'false' && unidentifiedParam === 'false')
+        || (identifiedParam === 'true' && unidentifiedParam === 'true')
+    ) {
+        idInput.checked = true;
+        unidInput.checked = true;
+        idInput.disabled = false;
+        unidInput.disabled = false;
+    } else if (identifiedParam === 'false' && unidentifiedParam === 'true') {
+        idInput.checked = false;
+        unidInput.checked = true;
+        idInput.disabled = false;
+        unidInput.disabled = true;
+    } else if (identifiedParam === 'true' && unidentifiedParam === 'false') {
+        idInput.checked = true;
+        unidInput.checked = false;
+        idInput.disabled = true;
+        unidInput.disabled = false;
     }
+
+    filterSpecimensInMapAndTable(
+        [speciesInput, stateInput, dateInput],
+        [idInput, unidInput],
+        specimens,
+        markers,
+        currentURL,
+    );
+
+    [idInput, unidInput].forEach((input) => {
+        input.addEventListener('change', () => {
+            if (idInput.checked && unidInput.checked) {
+                idInput.disabled = false;
+                unidInput.disabled = false;
+            } else if (idInput.checked && !unidInput.checked) {
+                idInput.disabled = true;
+                unidInput.disabled = false;
+            } else if (!idInput.checked && unidInput.checked) {
+                idInput.disabled = false;
+                unidInput.disabled = true;
+            }
+        });
+    });
 
     // Add event listener on the filters form so that the map and table are filtered when submitted
     filters.addEventListener('submit', (e) => {
@@ -649,6 +721,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 [idInput, unidInput],
                 specimens,
                 markers,
+                currentURL,
             );
         }, 100);
     });
@@ -671,5 +744,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Sort the table by the value in the clicked header
             sortTable(tableBody, tableRows, index, multiplier);
         });
+    });
+
+    map.on('moveend', () => {
+        const lat = map.getCenter().lat.toFixed(3);
+        const long = map.getCenter().lng.toFixed(3);
+        const zoom = map.getZoom();
+
+        currentURL.searchParams.set('lat', lat);
+        currentURL.searchParams.set('long', long);
+        currentURL.searchParams.set('zoom', zoom.toString());
+        window.history.replaceState({}, '', currentURL);
     });
 });
