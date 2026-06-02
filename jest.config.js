@@ -5,6 +5,6 @@ export default {
         '^.+\\.js$': 'babel-jest',
         '^.+\\.(ts|tsx)?$': ['ts-jest', { isolatedModules: true }],
     },
-    tsconfig: 'tsconfig.json',
+    roots: ['<rootDir>/src'],
     verbose: true,
 };

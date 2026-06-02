@@ -8,5 +8,6 @@
         "forceConsistentCasingInFileNames": true,
         "types": ["cypress", "cypress-axe", "jest", "node"],
         "baseUrl": "/"
-    }
+    },
+    "exclude": ["dist", "node_modules"]
 }

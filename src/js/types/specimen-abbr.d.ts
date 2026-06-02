@@ -16,7 +16,7 @@ export interface Specimen {
     gps: {
         lat: number,
         long: number,
-        elevation: string
+        elevation: string,
     }
     date: string,
     full_date: string
