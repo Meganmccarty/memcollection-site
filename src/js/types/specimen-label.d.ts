@@ -19,7 +19,7 @@ export interface SpecimenLabel {
     }
     determiner_firstname: string,
     determiner_lastname: string,
-    determiner_year: number,
+    determined_year: number,
     usi: string,
     preparer_firstname: string,
     preparer_lastname: string,
