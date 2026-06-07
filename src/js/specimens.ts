@@ -581,4 +581,4 @@ export async function initializePage() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', async () => initializePage);
+document.addEventListener('DOMContentLoaded', async () => initializePage());
