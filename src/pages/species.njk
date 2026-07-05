@@ -1,0 +1,36 @@
+---
+pagination:
+    data: pages
+    size: 1
+    alias: page
+    addAllPagesToCollections: true
+title: Browse Species | MEMC
+description: Browse species pages on the MEM Collection site.
+layout: layout.njk
+css: [
+    'rel=stylesheet href=/css/accessible-autocomplete.css',
+    'rel=stylesheet href=/css/species.css',
+    'rel=stylesheet href=/css/families.css'
+]
+js: [
+    'defer src=/js/species.js type=module',
+    'defer src=/js/species.legacy.js nomodule'
+]
+---
+<h1>Browse Species</h1>
+
+<form aria-describedby="search-description" aria-labelledby="search-label" class="filters">
+    <span hidden id="search-label">Species Page Search</span>
+    <div class="inputs-container">
+        <div class="input-wrapper">
+            <label for="taxon-input">Taxon</label>
+            <p class="input-hint" id="taxon-input-hint">
+                Latin or common name. Examples: 'Speyeria', 'Mormon Fritillary', 'Nymphalidae'
+            </p>
+            <div id="my-autocomplete-container"></div>
+        </div>
+    </div>
+    <button class="filter-button" type="submit">Update</button>
+</form>
+
+<section id="results"></section>

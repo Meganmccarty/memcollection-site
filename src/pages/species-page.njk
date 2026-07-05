@@ -13,7 +13,7 @@ js: [
     'defer src=/js/species-page.js type=module',
     'defer src=/js/species-page.legacy.js nomodule'
 ]
-permalink: "/orders/{{ page.order.name.toLowerCase() }}/families/{{ page.family.name.toLowerCase() }}/species/{{ page.slug }}/"
+permalink: "/{{ page.order.name.toLowerCase() }}/{{ page.family.name.toLowerCase() }}/{{ page.slug }}/"
 ---
 
 <h1>

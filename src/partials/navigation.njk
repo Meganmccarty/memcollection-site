@@ -25,6 +25,9 @@
             <li>
                 <a href="/collecting-trips">Trips</a>
             </li>
+            <li>
+                <a href="/species">Species</a>
+            </li>
             <li class="dropdown-list-item">
                 <button aria-controls="pages-dropdown"
                         aria-expanded="false"
@@ -36,7 +39,7 @@
                 <ul class="hide" id="pages-dropdown">
                     {% for order in orders %}
                     <li>
-                        <a href="/orders/{{ order.name.toLowerCase() }}" tabindex="-1">{{ order.name }}</a>
+                        <a href="/{{ order.name.toLowerCase() }}" tabindex="-1">{{ order.name }}</a>
                     </li>
                     {% endfor %}
                 </ul>

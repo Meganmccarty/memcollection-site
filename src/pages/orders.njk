@@ -13,7 +13,7 @@ js: [
     'defer src=/js/orders.js type=module',
     'defer src=/js/orders.legacy.js nomodule'
 ]
-permalink: "/orders/{{ order.name.toLowerCase() }}/"
+permalink: "/{{ order.name.toLowerCase() }}/"
 ---
 
 <h1>{{ order.name }} {{ order.authority }} – {{ order.common_name }}</h1>
@@ -24,7 +24,7 @@ permalink: "/orders/{{ order.name.toLowerCase() }}/"
     {% for family in families %}
         {% if family.order.name === order.name %}
             <li>
-                <a href="/orders/{{ order.name.toLowerCase() }}/families/{{ family.name.toLowerCase() }}/">
+                <a href="/{{ order.name.toLowerCase() }}/{{ family.name.toLowerCase() }}/">
                     {% set featuredImage = insectImages | findFeaturedByFamily(family.name) %}
                     {% if featuredImage %}
                         <img alt="{{ featuredImage.alt_text }}" src="{{ featuredImage.file }}" />

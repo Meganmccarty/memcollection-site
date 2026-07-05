@@ -1,16 +1,24 @@
 ul.taxonomy-list {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fill, 15rem);
-    justify-content: center;
+    // display: grid;
+    // gap: 1rem;
+    // grid-template-columns: repeat(auto-fill, 15rem);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    // justify-content: center;
     list-style: none;
+    margin: 1rem 0 0.5rem;
     padding: 0 1rem;
 
     li {
         background-color: var(--w-color-surface-dashboard-panel);
-        border: 0.0.625rem solid var(--w-color-border-furniture);
+        // border: 0.0.625rem solid var(--w-color-border-furniture);
+        // border: 0.125rem solid var(--w-color-border-furniture);
+        border: 0.125rem solid var(--w-color-border-furniture);
+        border-radius: 0.25rem;
+        margin: 0.25rem;
         min-height: 14rem;
-        min-width: 15rem;
+        width: 13.5rem;
 
         a {
             align-items: center;
@@ -34,10 +42,15 @@ ul.taxonomy-list {
             }
 
             svg {
-                border: 0.125rem solid var(--w-color-border-furniture);
+                // border: 0.125rem solid var(--w-color-border-furniture);
                 height: auto;
                 margin: 0.75rem 0;
                 width: 13.5rem;
+            }
+
+            .common-name,
+            .taxon-name {
+                text-align: center;
             }
 
         }

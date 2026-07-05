@@ -6,14 +6,14 @@ pagination:
     addAllPagesToCollections: true
 eleventyComputed:
     title: "{{ family.name }} | MEMC"
-    description: "The detail page for the order {{ family.name }}"
+    description: "The detail page for the family {{ family.name }}"
 layout: layout.njk
 css: ['rel=stylesheet href=/css/families.css']
 js: [
     'defer src=/js/families.js type=module',
     'defer src=/js/families.legacy.js nomodule'
 ]
-permalink: "/orders/{{ family.order.name.toLowerCase() }}/families/{{ family.name.toLowerCase() }}/"
+permalink: "/{{ family.order.name.toLowerCase() }}/{{ family.name.toLowerCase() }}/"
 ---
 {% block css %}
     <link rel="stylesheet" href="/css/families.css" />
@@ -70,7 +70,7 @@ permalink: "/orders/{{ family.order.name.toLowerCase() }}/families/{{ family.nam
             {% for page in pages | sort(attribute='species.p3') %}
                 {% if page.subfamily.name === subfamily.name %}
                     <li>
-                        <a href="/orders/{{ family.order.name.toLowerCase() }}/families/{{ family.name.toLowerCase() }}/species/{{ page.slug }}">
+                        <a href="/{{ family.order.name.toLowerCase() }}/{{ family.name.toLowerCase() }}/{{ page.slug }}">
                             {% set featuredImage = insectImages | findFeaturedBySpecies(page.title) %}
                             {% if featuredImage %}
                                 <img alt="{{ featuredImage.alt_text }}" src="{{ featuredImage.file }}" />

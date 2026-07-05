@@ -1,0 +1,54 @@
+---
+permalink: "/species-data.js"
+---
+[
+    {% for page in pages %}{ 
+        "title": "{{ page.title }}",
+        "slug": "{{ page.slug}}",
+        "order": {
+            "name": "{{ page.order.name }}",
+            "common_name": "{{ page.order.common_name | safe }}",
+            "authority": "{{ page.order.authority | safe  }}"
+        },
+        "family": {
+            "name": "{{ page.family.name }}",
+            "common_name": "{{ page.family.common_name | safe }}",
+            "authority": "{{ page.family.authority | safe  }}"
+        },
+        "subfamily": {
+            "name": "{{ page.subfamily.name }}",
+            "common_name": "{{ page.subfamily.common_name | safe }}",
+            "authority": "{{ page.subfamily.authority | safe  }}"
+        },
+        "tribe": {
+            "name": "{{ page.tribe.name }}",
+            "common_name": "{{ page.tribe.common_name | safe }}",
+            "authority": "{{ page.tribe.authority | safe  }}"
+        },
+        "genus": {
+            "name": "{{ page.genus.name }}",
+            "common_name": "{{ page.genus.common_name | safe }}",
+            "authority": "{{ page.genus.authority | safe }}"
+        },
+        "species": {
+            "name": "{{ page.species.name }}",
+            "binomial": "{{ page.species.binomial }}",
+            "common_name": "{{ page.species.common_name | safe }}",{% if page.species.mona %}
+            "mona": "{{ page.species.mona | safe }}",{% endif %}{% if page.species.p3 %}
+            "p3": "{{ page.species.p3 | safe }}",{% endif %}{% if page.species.ps %}
+            "ps": "{{ page.species.ps | safe }}",{% endif %}
+            "authority": "{{ page.species.authority | safe }}"
+        },
+        "subspecies": [{% for subspecies in page.subspecies %}
+            {
+                "name": "{{ subspecies.name }}",
+                "trinomial": "{{ subspecies.trinomial }}",
+                "common_name": "{{ subpecies.common_name | safe }}",{% if subspecies.mona %}
+                "mona": "{{ subspecies.mona | safe }}",{% endif %}{% if subspecies.p3 %}
+                "p3": "{{ subspecies.p3 | safe }}",{% endif %}{% if subspecies.ps %}
+                "ps": "{{ subspecies.ps | safe }}",{% endif %}
+                "authority": "{{ subspecies.authority | safe }}"
+            }{% if loop.last == false %},{% endif %}{% endfor %}]
+    }{% if loop.last == false %},{% endif %}
+    {% endfor %}
+]
