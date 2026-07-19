@@ -103,16 +103,17 @@
             justify-content: center;
             margin: 0.125rem;
             padding: 0.03rem 0.045rem;
-            width: 15.375rem;
         }
-
+        
         .label-locality {
             align-items: flex-start;
+            max-width: 15.375rem;
         }
-
+        
         .label-notes,
         .label-taxonomy {
             align-items: center;
+            max-width: 10.375rem;
         }
 
         .label-taxonomy {
@@ -136,7 +137,7 @@
         .label-notes span,
         .label-notes p,
         .label-taxonomy span {
-            text-align: center;
+            text-align: left;
         }
 
         .label-usi {
@@ -211,45 +212,120 @@
         display: none;
     }
 
+    // #label-output {
+    //     background-color: var(--white);
+    //     color: var(--black);
+    //     display: block;
+    //     margin: 0;
+    //     overflow-wrap: normal;
+
+    //     .single-label {
+    //         break-after: avoid;
+    //         break-before: avoid;
+    //         break-inside: avoid;
+    //         display: inline-block;
+    //         margin: 0;
+
+    //         p {
+    //             color: var(--black);
+    //             margin: 0;
+    //         }
+
+    //         .label-locality,
+    //         .label-notes,
+    //         .label-taxonomy {
+    //             border: 1.5px solid var(--black);
+    //             display: flex;
+    //             flex-direction: column;
+    //             justify-content: center;
+    //             margin: 1px 0.5px;
+    //             padding: 0.48px 0.72px;
+    //             max-width: 82px;
+    //         }
+
+    //         .label-locality {
+    //             align-items: flex-start;
+    //         }
+
+    //         .label-notes,
+    //         .label-taxonomy {
+    //             align-items: center;
+    //         }
+
+    //         .label-locality span,
+    //         .label-notes span,
+    //         .label-notes p,
+    //         .label-taxonomy span {
+    //             font-family: Geneva, sans-serif;
+    //             font-size: 3pt;
+    //             letter-spacing: -0.05px;
+    //             line-height: 1.6;
+    //             width: 100%;
+    //         }
+
+    //         .label-locality span {
+    //             margin: 0;
+    //             padding: 0;
+    //         }
+
+    //         .label-notes span,
+    //         .label-notes p,
+    //         .label-taxonomy span {
+    //             text-align: center;
+    //         }
+
+    //         .label-usi {
+    //             text-align: right;
+    //         }
+    //     }
+    // }
+
     #label-output {
+        align-items: stretch;
         background-color: var(--white);
         color: var(--black);
-        display: block;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
         margin: 0;
-        overflow-wrap: normal;
-
+        
         .single-label {
+            // display: inline-block;
             break-after: avoid;
             break-before: avoid;
             break-inside: avoid;
-            display: inline-block;
             margin: 0;
-
+            
             p {
                 color: var(--black);
                 margin: 0;
             }
-
+            
             .label-locality,
             .label-notes,
             .label-taxonomy {
-                border: 1.5px solid var(--black);
+                border: 1px solid var(--black);
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 margin: 1px 0.5px;
-                padding: 0.48px 0.72px;
-                width: 82px;
+                padding: 0.75px 1px;
             }
-
+            
             .label-locality {
                 align-items: flex-start;
+                max-width: 82px;
             }
-
+            
             .label-notes,
             .label-taxonomy {
                 align-items: center;
+                max-width: 55.333px;
             }
+
+            // .label-taxonomy {
+            //     margin: 0 0 1rem;
+            // }
 
             .label-locality span,
             .label-notes span,
@@ -270,7 +346,7 @@
             .label-notes span,
             .label-notes p,
             .label-taxonomy span {
-                text-align: center;
+                text-align: left;
             }
 
             .label-usi {
