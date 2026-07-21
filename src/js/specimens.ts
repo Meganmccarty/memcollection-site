@@ -1,15 +1,14 @@
 import L from 'leaflet';
 import { Specimen } from './types/specimen-abbr';
+import { createMarker, initializeLeafletMap } from './leaflet-map';
 
 /**
  * Fetches specimen data from the /specimens-data.js page
  * @returns - A JSON object containing all of the specimens
  */
 export async function fetchSpecimens(): Promise<Specimen[]> {
-    // Fetch and return the specimens
     const response = await fetch('/specimens-data.js');
-    const data = await response.json();
-    return data;
+    return response.json();
 }
 
 /**
@@ -23,7 +22,7 @@ export function getSpecimensWithGPS(specimens: Specimen[]): Specimen[] {
 
 /**
  * Adds a marker on the Leaflet map representing where a specimen was collected
- * @param icon - The icon added to the map (either blue or pink)
+ * @param icon - The icon added to the map (either blue or yellow)
  * @param specimens - An array containing all of the specimens that need markers
  * @param markerGroup - The Leaflet layer group containing all of the markers
  */
@@ -46,13 +45,10 @@ export function getSpecimensWithGPS(specimens: Specimen[]): Specimen[] {
             },
         );
 
-        // Store the specimen's taxon information in a variable
-        let { taxon } = specimen;
-
         // If the specimen's taxon is at genus or below, then it needs to be italicized
-        if (specimen.italics) {
-            taxon = `<i>${specimen.taxon}</i>`;
-        }
+        const taxon = specimen.italics
+            ? `<i>${specimen.taxon}</i>`
+            : specimen.taxon;
 
         // Add a popup to the specimen's marker
         // Includes a specimen's taxon info, GPS coordinates, elevation, date, and unique specimen
@@ -71,20 +67,6 @@ export function getSpecimensWithGPS(specimens: Specimen[]): Specimen[] {
 }
 
 /**
- * Creates a Leaflet marker using a custom image
- * @param url - The url of the image asset used as the icon
- * @returns The generated Leaflet icon
- */
-export function createMarker(url: string): L.Icon {
-    return L.icon({
-        iconUrl: url,
-        iconSize: [25, 85],
-        iconAnchor: [12.5, 60],
-        popupAnchor: [0, -35],
-    });
-}
-
-/**
  * Creates a set of markers for both identified and unidentified specimens
  * @param specimens - An array containing all of the specimens that need markers
  * @param markerGroup - The Leaflet layer group containing all of the markers
@@ -95,7 +77,7 @@ export function createSpecimenMarkers(
 ): void {
     // Create Leaflet icons for identified and unidentified specimens
     const blueIcon: L.Icon = createMarker('/assets/uxwing/map-pin-icon-blue.svg');
-    const pinkIcon: L.Icon = createMarker('/assets/uxwing/map-pin-icon-pink.svg');
+    const yellowIcon: L.Icon = createMarker('/assets/uxwing/map-pin-icon-yellow.svg');
 
     // Create some empty arrays that will hold identified and unidentified specimens
     const identified: Specimen[] = [];
@@ -103,14 +85,12 @@ export function createSpecimenMarkers(
 
     // Now, go through the specimens with GPS data and push each one into either the identified
     // or unidentified array
-    specimensWithGPS.map((specimen: Specimen) => {
+    specimensWithGPS.forEach((specimen: Specimen) => {
         if (specimen.identified) {
             identified.push(specimen);
         } else {
             unidentified.push(specimen);
         }
-
-        return specimen;
     });
 
     // Clear out all of the current map markers
@@ -118,9 +98,7 @@ export function createSpecimenMarkers(
 
     // Now, add the new map markers for the identified and unidentified specimens
     addSpecimenMarker(blueIcon, identified, markerGroup);
-    addSpecimenMarker(pinkIcon, unidentified, markerGroup);
-    // addSpecimenMarker(blue, identified, markerGroup);
-    // addSpecimenMarker(pink, unidentified, markerGroup);
+    addSpecimenMarker(yellowIcon, unidentified, markerGroup);
 }
 
 export function sortRows(
@@ -134,39 +112,13 @@ export function sortRows(
         const cellA: HTMLTableCellElement = rowA.getElementsByTagName('td')[index];
         const cellB: HTMLTableCellElement = rowB.getElementsByTagName('td')[index];
 
-        // Create empty variables to store the cell values
-        let cellAValue = '';
-        let cellBValue = '';
-        // Now, set the above variables to the lowercased text content of the cells (if the cells
-        // have data)
-        if (cellA.textContent) {
-            cellAValue = cellA.textContent.toLowerCase();
-        }
-        if (cellB.textContent) {
-            cellBValue = cellB.textContent.toLowerCase();
-        }
+        // Grab the two cells values
+        const cellAValue = cellA.textContent?.toLowerCase() ?? '';
+        const cellBValue = cellB.textContent?.toLowerCase() ?? '';
 
-        // Variable for holding the number that determines the sort direction
-        let result = 0;
-
-        // Switch statement for the actual sorting
-        // The multiplier is used to toggle ascending/descending (is set to either 1 or -1)
-        switch (true) {
-            case cellAValue > cellBValue:
-                result = 1 * multiplier;
-                break;
-            case cellAValue < cellBValue:
-                result = -1 * multiplier;
-                break;
-            case cellAValue === cellBValue:
-                result = 0;
-                break;
-            default:
-                break;
-        }
-
-        // Return the sort number
-        return result;
+        if (cellAValue > cellBValue) return 1 * multiplier;
+        if (cellAValue < cellBValue) return -1 * multiplier;
+        return 0;
     });
 }
 
@@ -191,9 +143,7 @@ export function sortTable(
     const tbody = tableBody;
     tbody.innerHTML = '';
     // Now, add the sorted table rows
-    newTableRows.forEach((newTableRow) => {
-        tableBody.appendChild(newTableRow);
-    });
+    newTableRows.forEach((row) => tbody.appendChild(row));
 }
 
 /**
@@ -212,7 +162,6 @@ export function getCount(specimens: Specimen[]): number {
  * @returns - The element with the newly-added inner text
  */
 export function setInnerText(element: HTMLElement, text: string): void {
-    // Add text to element's inner text
     const el = element;
     el.innerText = text;
 }
@@ -235,9 +184,7 @@ export function filterSpecimens(
     idInputChecked: boolean,
     unidInputChecked: boolean,
 ): Specimen[] {
-    // Filters the specimens array based on inputs in the filters form;
-    // values to filter by include taxon, state, date, and identified/unidentified state
-    const filteredSpecimens = specimens.filter((specimen) => (
+    return specimens.filter((specimen) => (
         specimen.taxon.toLowerCase().includes(speciesValue)
             || specimen.common_name.toLowerCase().includes(speciesValue)
         ) && (
@@ -250,19 +197,16 @@ export function filterSpecimens(
             specimen.identified === idInputChecked
             || !specimen.identified === unidInputChecked
         ));
-    return filteredSpecimens;
 }
 
 /**
  * Filters the specimens in the specimen table
  * @param filteredSpecimens - The array of filtered specimens
  * @param specimens - The original array of specimens
- * @param tableBodyRows - The NodeList of table rows
  */
 export async function filterTable(
     filteredSpecimens: Specimen[],
     specimens: Specimen[],
-    // tableBodyRows: NodeListOf<HTMLTableRowElement>,
 ): Promise<void> {
     // Grab the table header and body
     const tableHeaders: NodeListOf<HTMLTableCellElement> = document.querySelectorAll('table thead tr th');
@@ -289,11 +233,7 @@ export async function filterTable(
         // Find the sort state of the header by its aria-sort value, then set the multiplier
         // accordingly
         const headerState = header.getAttribute('aria-sort');
-        if (headerState === 'ascending') {
-            multiplier = 1;
-        } else if (headerState === 'descending') {
-            multiplier = -1;
-        }
+        multiplier = headerState === 'descending' ? -1 : 1;
 
         // The .getAttribute() method returns string | null; need to ensure it's truthy before
         // saving it to the headerValue variable
@@ -308,51 +248,25 @@ export async function filterTable(
     if (filteredSpecimens.length === specimens.length) {
         tableBody.innerHTML = '';
         Array.from(tableBodyRows).forEach((row) => tableBody.appendChild(row));
+        return;
     }
 
     // First, filter the specimens based on headerValue
     filteredSpecimens.sort((a: any, b: any): number => {
         const aValue = a[headerValue];
         const bValue = b[headerValue];
-        let result = 0;
-        switch (true) {
-            case aValue > bValue:
-                result = 1 * multiplier;
-                break;
-            case aValue < bValue:
-                result = -1 * multiplier;
-                break;
-            case aValue === bValue:
-                result = 0;
-                break;
-            default:
-                break;
-        }
-        return result;
+        if (aValue > bValue) return 1 * multiplier;
+        if (aValue < bValue) return -1 * multiplier;
+        return 0;
     });
-    // Store the unique specimen identifiers in an array
+
     const ids = filteredSpecimens.map((specimen) => specimen.usi);
-    // Create an empty array for the table rows
-    const rows: any[] = [];
+    const rows = ids.map((id) => (
+        Array.from(tableBodyRows).find((row) => row.cells[0].textContent?.includes(id))
+    )).filter((row): row is HTMLTableRowElement => row !== undefined);
 
-    // If the filteredSpecimens array is truthy, create
-    if (filteredSpecimens) {
-        // For each filtered specimen, find its corresponding table row and push it to the rows
-        // array
-        ids.forEach((id) => {
-            const newTableRows = Array.from(tableBodyRows);
-            const filteredTableRows = newTableRows.find((row) => (
-                row.cells[0].textContent?.includes(id)));
-            rows.push(filteredTableRows);
-        });
-
-        // Clear out the table body to make way for the filtered rows
-        tableBody.innerHTML = '';
-        // Add the filtered rows to the table body
-        rows.forEach((row) => {
-            tableBody.appendChild(row);
-        });
-    }
+    tableBody.innerHTML = '';
+    rows.forEach((row) => tableBody.appendChild(row));
 }
 
 /**
@@ -374,12 +288,8 @@ export function configureTableHeaders(
     const header: HTMLElement | null = headerBtn.parentElement;
     const state: string | null | undefined = header?.getAttribute('aria-sort');
 
-    // Create an empty variable to hold a number representing ascending (1) or descending (-1) state
-    let multiplier: number;
-
     // Remove the aria-sort attribute from all of the table headers
     tableHeaders.forEach((tableHeader: HTMLTableCellElement) => tableHeader.removeAttribute('aria-sort'));
-
     // Hide all of the table header chevrons that indicate sort direction
     tableHeaderBtnImages.forEach((image: HTMLImageElement) => image.setAttribute('hidden', ''));
 
@@ -394,88 +304,11 @@ export function configureTableHeaders(
     if (header?.getAttribute('aria-sort') === 'ascending') {
         header.setAttribute('aria-sort', 'descending');
         headerBtn.lastElementChild?.removeAttribute('hidden');
-        multiplier = -1;
-    } else {
+        return -1;
+    }
         header?.setAttribute('aria-sort', 'ascending');
         headerBtn.firstElementChild?.removeAttribute('hidden');
-        multiplier = 1;
-    }
-
-    return multiplier;
-}
-
-/**
- * Sets up the Leaflet map that will display the specimen markers
- * @returns - The newly-created Leaflet map
- */
-export function initializeLeafletMap(lat: number, long: number, zoom: number): L.Map {
-    // Create the Leaflet map and set its default position and zoom
-    const map = L.map(
-        'map',
-        {
-            preferCanvas: true,
-            scrollWheelZoom: true,
-        },
-    ).setView([lat, long], zoom);
-    // ).setView([50.000, -104.180], 3);
-
-    // Set up the default tile layer (street view)
-    const streetView = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
-
-    // Set up the satellite view tile layer, along with labels and roads
-    const satelliteView = L.tileLayer(
-        'https://{s}.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-        {
-            maxZoom: 19,
-            subdomains: ['server', 'services'],
-            attribution: '<a href="https://static.arcgis.com/attribution/World_Imagery">DigitalGlobe, GeoEye, i-cubed, USDA, USGS, AEX, Getmapping, Aerogrid, IGN, IGP, swisstopo, and the GIS User Community</a>',
-        },
-    );
-    const satelliteViewLabels = L.tileLayer(
-        'https://{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
-        {
-            maxZoom: 19,
-            subdomains: ['server', 'services'],
-        },
-    );
-    const satelliteViewRoads = L.tileLayer(
-        'https://{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}',
-        {
-            maxZoom: 19,
-            subdomains: ['server', 'services'],
-        },
-    );
-
-    // Merge the satellite view tile layers into one layer
-    const satelliteGroup = L.layerGroup([satelliteView, satelliteViewLabels, satelliteViewRoads]);
-
-    // Set up the baseMap object with the streetView and satelliteGroup tile layers
-    const baseMaps = {
-        'Street View': streetView,
-        'Satellite View': satelliteGroup,
-    };
-
-    // Add the baseMaps to the Leaflet map
-    L.control.layers(baseMaps).addTo(map);
-
-    // Create and add a reset button to the Leaflet map
-    const resetMapBtn = document.getElementById('reset-map-button');
-    resetMapBtn?.addEventListener('click', () => {
-        map.setView([lat, long], zoom);
-    });
-
-    const bottomLeftControls = document.getElementById('bottom-left-controls');
-    const bottomLeft = document.querySelector('div.leaflet-bottom.leaflet-left');
-
-    if (bottomLeft && bottomLeftControls) {
-        bottomLeftControls.removeAttribute('hidden');
-        bottomLeft.append(bottomLeftControls);
-    }
-
-    return map;
+        return 1;
 }
 
 export function createSpecimenTableRows(filteredSpecimens: Specimen[]): void {
@@ -483,32 +316,30 @@ export function createSpecimenTableRows(filteredSpecimens: Specimen[]): void {
 
     filteredSpecimens.forEach((specimen: Specimen) => {
         const tableRow = document.createElement('tr');
-        const tableDataUsi = document.createElement('td');
-        const tableDataTaxon = document.createElement('td');
-        const tableDataCommonName = document.createElement('td');
-        const tableDataCountry = document.createElement('td');
-        const tableDataState = document.createElement('td');
-        const tableDataLocality = document.createElement('td');
-        const tableDataDate = document.createElement('td');
 
-        tableDataUsi.innerHTML = `<a href="/specimens/${specimen.usi.toLowerCase()}">${specimen.usi}</a>`;
-        tableDataTaxon.innerText = specimen.taxon;
-        if (specimen.italics) {
-            tableDataTaxon.classList.add('italics');
-        }
-        tableDataCommonName.innerText = specimen.common_name;
-        tableDataCountry.innerText = specimen.country;
-        tableDataState.innerText = specimen.state;
-        tableDataLocality.innerText = specimen.locality;
-        tableDataDate.innerText = specimen.date;
+        const cells: [string, string, boolean?][] = [
+            [`<a href="/specimens/${specimen.usi.toLowerCase()}">${specimen.usi}</a>`, 'innerHTML'],
+            [specimen.taxon, 'innerText', specimen.italics],
+            [specimen.common_name, 'innerText'],
+            [specimen.country, 'innerText'],
+            [specimen.state, 'innerText'],
+            [specimen.locality, 'innerText'],
+            [specimen.date, 'innerText'],
+        ];
 
-        tableRow.appendChild(tableDataUsi);
-        tableRow.appendChild(tableDataTaxon);
-        tableRow.appendChild(tableDataCommonName);
-        tableRow.appendChild(tableDataCountry);
-        tableRow.appendChild(tableDataState);
-        tableRow.appendChild(tableDataLocality);
-        tableRow.appendChild(tableDataDate);
+        cells.forEach(([value, method, italics]) => {
+            const td = document.createElement('td');
+            if (method === 'innerHTML') {
+                td.innerHTML = value;
+            } else {
+                td.innerText = value;
+            }
+
+            if (italics) {
+                td.classList.add('italics');
+            }
+            tableRow.appendChild(td);
+        });
 
         tableBody?.appendChild(tableRow);
     });
@@ -516,14 +347,7 @@ export function createSpecimenTableRows(filteredSpecimens: Specimen[]): void {
 
 export function toggleLoader(loading: boolean) {
     const loader = document.getElementById('loader');
-
-    if (loader) {
-        if (loading) {
-            loader.classList.remove('hide');
-        } else {
-            loader.classList.add('hide');
-        }
-    }
+    loader?.classList.toggle('hide', !loading);
 }
 
 /**
@@ -538,6 +362,7 @@ export function filterSpecimensInMapAndTable(
     inputCheckboxes: HTMLInputElement[],
     specimens: Specimen[],
     markers: L.LayerGroup,
+    currentURL: URL,
 ) {
     // Destructure the arrays containing the input fields and input checkboxes
     const [speciesInput, stateInput, dateInput]: HTMLInputElement[] = inputFields;
@@ -547,8 +372,16 @@ export function filterSpecimensInMapAndTable(
     const speciesValue = speciesInput.value.toLowerCase();
     const stateValue = stateInput.value.toLowerCase();
     const dateValue = dateInput.value.toString().toLowerCase();
-    const idInputChecked = idInput.checked;
-    const unidInputChecked = unidInput.checked;
+    const idInputChecked = !!idInput.checked;
+    const unidInputChecked = !!unidInput.checked;
+
+    currentURL.searchParams.set('species', speciesValue);
+    currentURL.searchParams.set('state', stateValue);
+    currentURL.searchParams.set('date', dateValue);
+    currentURL.searchParams.set('identified', idInputChecked.toString());
+    currentURL.searchParams.set('unidentified', unidInputChecked.toString());
+
+    window.history.replaceState({}, '', currentURL);
 
     // Create an array of filtered specimens based on the values from the filter form inputs
     const filteredSpecimens = filterSpecimens(
@@ -564,18 +397,16 @@ export function filterSpecimensInMapAndTable(
     const specimensWithGPS = getSpecimensWithGPS(filteredSpecimens);
 
     // Get counts for all specimens and only specimens with GPS data
-    const GPSCount = getCount(specimensWithGPS).toString();
-    const allCount = getCount(filteredSpecimens).toString();
+    // const GPSCount = getCount(specimensWithGPS).toString();
+    // const allCount = getCount(filteredSpecimens).toString();
     const GPSCountSpan = document.getElementById('specimen-count-gps');
     const allCountSpan = document.getElementById('specimen-count-all');
 
     if (GPSCountSpan) {
-        setInnerText(GPSCountSpan, GPSCount);
-        GPSCountSpan.innerText += ' specimens';
+        GPSCountSpan.innerText = `${getCount(specimensWithGPS)} specimens`;
     }
     if (allCountSpan) {
-        setInnerText(allCountSpan, allCount);
-        allCountSpan.innerText += ' specimens';
+        allCountSpan.innerText = `${getCount(filteredSpecimens)} specimens`;
     }
 
     // Create markers on the Leaflet map for the filtered specimens
@@ -596,11 +427,40 @@ export function filterSpecimensInMapAndTable(
     toggleLoader(false);
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
+export async function initializePage() {
+    const currentURL = new URL(window.location.href);
+
+    const latParam = currentURL.searchParams.get('lat');
+    const longParam = currentURL.searchParams.get('long');
+    const zoomParam = currentURL.searchParams.get('zoom');
+
     // Initialize a Leaflet map
-    const map = initializeLeafletMap(50.000, -104.180, 3);
+    let map;
+
+    if (latParam && longParam && zoomParam) {
+        map = initializeLeafletMap(
+            parseFloat(latParam),
+            parseFloat(longParam),
+            parseInt(zoomParam, 10),
+            'map',
+        );
+    } else {
+        map = initializeLeafletMap(50.000, -104.180, 3, 'map');
+        currentURL.searchParams.set('lat', '50.000');
+        currentURL.searchParams.set('long', '-104.180');
+        currentURL.searchParams.set('zoom', '3');
+        window.history.replaceState({}, '', currentURL);
+    }
+
     // Create a layerGroup for the markers (so that they can be cleared when filters are applied)
     const markers = L.layerGroup().addTo(map);
+
+    // Fix missing accessible name for leaflet layers "button"
+    const layersButton = document.querySelector('a.leaflet-control-layers-toggle');
+
+    if (layersButton) {
+        layersButton.ariaLabel = 'Map Layers';
+    }
 
     // Fetch the specimens
     const specimens: Specimen[] = await fetchSpecimens();
@@ -619,16 +479,58 @@ document.addEventListener('DOMContentLoaded', async () => {
     const tableHeaderBtnImages: NodeListOf<HTMLImageElement> = document.querySelectorAll('table thead tr th button img');
 
     // Initially filter the Leaflet map and table based on the empty filters form
-    if (speciesInput.value !== '' || stateInput.value !== '' || dateInput.value !== '') {
-        filterSpecimensInMapAndTable(
-            [speciesInput, stateInput, dateInput],
-            [idInput, unidInput],
-            specimens,
-            markers,
-        );
-    } else {
-        toggleLoader(false);
+    const speciesParam = currentURL.searchParams.get('species');
+    const stateParam = currentURL.searchParams.get('state');
+    const dateParam = currentURL.searchParams.get('date');
+    const identifiedParam = currentURL.searchParams.get('identified');
+    const unidentifiedParam = currentURL.searchParams.get('unidentified');
+
+    speciesInput.value = speciesParam ?? '';
+    stateInput.value = stateParam ?? '';
+    dateInput.value = dateParam ?? '';
+
+    if (
+        (identifiedParam === 'false' && unidentifiedParam === 'false')
+        || (identifiedParam === 'true' && unidentifiedParam === 'true')
+    ) {
+        idInput.checked = true;
+        unidInput.checked = true;
+        idInput.disabled = false;
+        unidInput.disabled = false;
+    } else if (identifiedParam === 'false' && unidentifiedParam === 'true') {
+        idInput.checked = false;
+        unidInput.checked = true;
+        idInput.disabled = false;
+        unidInput.disabled = true;
+    } else if (identifiedParam === 'true' && unidentifiedParam === 'false') {
+        idInput.checked = true;
+        unidInput.checked = false;
+        idInput.disabled = true;
+        unidInput.disabled = false;
     }
+
+    filterSpecimensInMapAndTable(
+        [speciesInput, stateInput, dateInput],
+        [idInput, unidInput],
+        specimens,
+        markers,
+        currentURL,
+    );
+
+    [idInput, unidInput].forEach((input) => {
+        input.addEventListener('change', () => {
+            if (idInput.checked && unidInput.checked) {
+                idInput.disabled = false;
+                unidInput.disabled = false;
+            } else if (idInput.checked && !unidInput.checked) {
+                idInput.disabled = true;
+                unidInput.disabled = false;
+            } else if (!idInput.checked && unidInput.checked) {
+                idInput.disabled = false;
+                unidInput.disabled = true;
+            }
+        });
+    });
 
     // Add event listener on the filters form so that the map and table are filtered when submitted
     filters.addEventListener('submit', (e) => {
@@ -642,6 +544,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 [idInput, unidInput],
                 specimens,
                 markers,
+                currentURL,
             );
         }, 100);
     });
@@ -665,4 +568,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             sortTable(tableBody, tableRows, index, multiplier);
         });
     });
-});
+
+    map.on('moveend', () => {
+        const lat = map.getCenter().lat.toFixed(3);
+        const long = map.getCenter().lng.toFixed(3);
+        const zoom = map.getZoom();
+
+        currentURL.searchParams.set('lat', lat);
+        currentURL.searchParams.set('long', long);
+        currentURL.searchParams.set('zoom', zoom.toString());
+        window.history.replaceState({}, '', currentURL);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', async () => initializePage);

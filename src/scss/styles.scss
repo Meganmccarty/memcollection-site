@@ -1,3 +1,5 @@
+@use 'colors';
+
 :root {
     /* ----- GREENS ----- */
     --dark-green-level-1: rgb(6 78 59);
@@ -50,7 +52,7 @@ html {
 }
 
 body {
-    background-color: var(--dark-gray-level-1);
+    background-color: var(--w-color-surface-page);
     margin: 0;
 }
 
@@ -59,7 +61,7 @@ main {
     padding: 0;
 
     #overlay {
-        background-color: var(--black);
+        background-color: var(--w-color-surface-header);
         display: none;
         height: 100vh;
         left: 0;
@@ -75,50 +77,132 @@ main {
     }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    color: var(--w-color-text-context);
+}
+
 h1 {
-    border-bottom: 0.125rem solid var(--medium-gray-level-2);
-    color: var(--off-white);
+    border-bottom: 0.125rem solid var(--w-color-border-furniture);
     font-size: 1.5rem;
     margin: 0.75rem 1.5rem;
     padding: 0 0 0.75rem;
 }
 
 h2 {
-    color: var(--off-white);
     font-size: 1.25rem;
     margin: 0.75rem 1.5rem;
 }
 
 p {
-    color: var(--off-white);
     margin: 0 1.5rem;
 }
 
 a {
-    color: var(--light-green-level-2);
+    color: var(--w-color-text-link-default);
     text-decoration: underline;
 
-    &:visited {
-        color: var(--light-pink-level-2);
-    }
 
     &:focus-visible,
     &:hover {
         text-decoration: none;
     }
 
-    &:focus-visible {
-        color: var(--off-white);
-        outline: var(--light-green-level-2) 0.125rem solid;
+    &:hover {
+        color: var(--w-color-text-link-hover);
     }
 
-    &:visited:focus-visible {
-        outline: var(--light-pink-level-2) 0.125rem solid;
+    &:focus-visible {
+        outline: var(--w-color-focus) 0.125rem solid;
+    }
+}
+
+button {
+    background-color: var(--w-color-surface-button-default);
+    border: 0.0625rem solid var(--w-color-border-button-outline-default);
+    color: var(--w-color-text-button);
+
+    &:disabled {
+        background-color: var(--w-color-surface-button-inactive);
+    }
+
+    &:hover {
+        background-color: var(--w-color-surface-button-hover);
+        border: 0.0625rem solid var(--w-color-border-button-outline-hover);
+        cursor: pointer;
+    }
+
+    &:focus-visible {
+        outline: var(--w-color-focus) 0.125rem solid;
+        outline-offset: 0.125rem;
+    }
+}
+
+input {
+    background-color: var(--w-color-surface-field);
+    border: 0.0625rem solid var(--w-color-border-field-default);
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    color: var(--w-color-text-context);
+    padding: 0 0.75rem;
+
+    &:hover {
+        border: 0.0625rem solid var(--w-color-border-field-hover);
+    }
+
+    &:focus-visible {
+        outline: 0.125rem solid var(--w-color-focus);
+    }
+
+    &:disabled {
+        background-color: var(--w-color-surface-field-inactive);
+        border: 0.0625rem solid var(--w-color-border-field-inactive);
+    }
+}
+
+label {
+    color: var(--w-color-text-context);
+}
+
+table {
+    background-color: var(--w-color-surface-dashboard-panel);
+    border: 0.125rem solid var(--w-color-border-furniture);
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: var(--w-color-text-context);
+
+    .italics {
+        font-style: italic;
+    }
+
+    th {
+        background-color: var(--w-color-surface-menus);
+        color: var(--w-color-text-button);
+
+        button.header-button {
+            color: var(--w-color-text-button);
+        }
+    }
+
+    tbody {
+        color: var(--w-color-border-interactive-more-contrast-hover);
+
+        tr:nth-child(odd) {
+            background-color: light-dark(var(--w-color-grey-100), var(--w-color-grey-500));
+        }
+
+        tr:nth-child(even) {
+            background-color: light-dark(var(--w-color-grey-50), var(--w-color-grey-600));
+        }
     }
 }
 
 footer {
-    color: var(--off-white);
+    color: var(--w-color-text-context);
     margin: 3rem 1rem 1rem;
 }
 
@@ -136,11 +220,11 @@ footer {
 }
 
 #main-skip-link {
-    background-color: var(--medium-green-level-3);
-    color: var(--black);
+    background-color: var(--w-color-surface-button-hover);
+    color: var(--w-color-text-button);
     font-weight: 700;
     left: calc(50% - 5rem);
-    outline: 0.125rem solid var(--light-green-level-1);
+    outline: 0.125rem solid var(--w-color-focus);
     outline-offset: 0.125rem;
     padding: 1rem;
     position: absolute;

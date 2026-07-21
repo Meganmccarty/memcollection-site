@@ -1,0 +1,295 @@
+{
+    "meta": {
+        "total_count": 4
+    },
+    "items": [
+        {
+            "id": 1,
+            "title": "Battus philenor",
+            "slug": "battus-philenor",
+            "order": {
+                "id": 1,
+                "name": "Lepidoptera",
+                "common_name": "Butterflies and Moths",
+                "authority": "Linnaeus, 1758",
+                "date_created": "2024-11-17T00:37:27.071000Z",
+                "date_modified": "2024-11-17T00:37:27.071000Z"
+            },
+            "family": {
+                "id": 1,
+                "name": "Papilionidae",
+                "common_name": "Swallowtails and Parnassians",
+                "authority": "Latreille, [1802]",
+                "date_created": "2024-11-17T00:37:47.482000Z",
+                "date_modified": "2025-07-20T04:56:11.176000Z",
+                "order": 1
+            },
+            "subfamily": {
+                "id": 1,
+                "name": "Papilioninae",
+                "common_name": "Swallowtails",
+                "authority": "Latreille, [1802]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:38:59.945218Z",
+                "family": 1
+            },
+            "tribe": {
+                "id": 1,
+                "name": "Troidini",
+                "common_name": null,
+                "authority": "Talbot, 1939",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:40:07.934532Z",
+                "subfamily": 1
+            },
+            "genus": {
+                "id": 1,
+                "name": "Battus",
+                "common_name": null,
+                "authority": "Scopoli, 1777",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:40:26.984903Z",
+                "tribe": 1
+            },
+            "species": {
+                "id": 1,
+                "name": "philenor",
+                "binomial": "Battus philenor",
+                "common_name": "Pipevine Swallowtail",
+                "authority": "(Linnaeus, 1771)",
+                "mona": "4157.00",
+                "p3": "770294.00",
+                "ps": null,
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2025-06-14T19:50:22.390000Z",
+                "genus": 1
+            },
+            "subspecies": [],
+            "taxonomy": "",
+            "description": "",
+            "distribution": "",
+            "seasonality": "",
+            "habitat": "",
+            "food": "",
+            "life_cycle": "",
+            "first_published_at": null,
+            "last_published_at": null
+        },
+        {
+            "id": 2,
+            "title": "Eurytides marcellus",
+            "slug": "eurytides-marcellus",
+            "order": {
+                "id": 1,
+                "name": "Lepidoptera",
+                "common_name": "Butterflies and Moths",
+                "authority": "Linnaeus, 1758",
+                "date_created": "2024-11-17T00:37:27.071000Z",
+                "date_modified": "2024-11-17T00:37:27.071000Z"
+            },
+            "family": {
+                "id": 1,
+                "name": "Papilionidae",
+                "common_name": "Swallowtails and Parnassians",
+                "authority": "Latreille, [1802]",
+                "date_created": "2024-11-17T00:37:47.482000Z",
+                "date_modified": "2025-07-20T04:56:11.176000Z",
+                "order": 1
+            },
+            "subfamily": {
+                "id": 1,
+                "name": "Papilioninae",
+                "common_name": "Swallowtails",
+                "authority": "Latreille, [1802]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:38:59.945218Z",
+                "family": 1
+            },
+            "tribe": {
+                "id": 2,
+                "name": "Leptocircini",
+                "common_name": null,
+                "authority": "Kirby, 1896",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:39:14.458224Z",
+                "subfamily": 1
+            },
+            "genus": {
+                "id": 2,
+                "name": "Eurytides",
+                "common_name": null,
+                "authority": "Hübner, [1821]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:39:50.743954Z",
+                "tribe": 2
+            },
+            "species": {
+                "id": 2,
+                "name": "marcellus",
+                "binomial": "Eurytides marcellus",
+                "common_name": "Zebra Swallowtail",
+                "authority": "(Cramer, 1777)",
+                "mona": "4184.00",
+                "p3": "770296.00",
+                "ps": null,
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2025-06-14T19:50:22.390000Z",
+                "genus": 2
+            },
+            "subspecies": [],
+            "taxonomy": "",
+            "description": "",
+            "distribution": "",
+            "seasonality": "",
+            "habitat": "",
+            "food": "",
+            "life_cycle": "",
+            "first_published_at": null,
+            "last_published_at": null
+        },
+        {
+            "id": 3,
+            "title": "Papilio polyxenes",
+            "slug": "papilio-polyxenes",
+            "order": {
+                "id": 1,
+                "name": "Lepidoptera",
+                "common_name": "Butterflies and Moths",
+                "authority": "Linnaeus, 1758",
+                "date_created": "2024-11-17T00:37:27.071000Z",
+                "date_modified": "2024-11-17T00:37:27.071000Z"
+            },
+            "family": {
+                "id": 1,
+                "name": "Papilionidae",
+                "common_name": "Swallowtails and Parnassians",
+                "authority": "Latreille, [1802]",
+                "date_created": "2024-11-17T00:37:47.482000Z",
+                "date_modified": "2025-07-20T04:56:11.176000Z",
+                "order": 7
+            },
+            "subfamily": {
+                "id": 1,
+                "name": "Papilioninae",
+                "common_name": "Swallowtails",
+                "authority": "Latreille, [1802]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:38:59.945218Z",
+                "family": 1
+            },
+            "tribe": {
+                "id": 3,
+                "name": "Papilionini",
+                "common_name": null,
+                "authority": "Latreille, [1802]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:41:00.966013Z",
+                "subfamily": 1
+            },
+            "genus": {
+                "id": 3,
+                "name": "Papilio",
+                "common_name": null,
+                "authority": "Linnaeus, 1758",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:41:21.256714Z",
+                "tribe": 3
+            },
+            "species": {
+                "id": 3,
+                "name": "polyxenes",
+                "binomial": "Papilio polyxenes",
+                "common_name": "Black Swallowtail",
+                "authority": "Fabricius, 1775",
+                "mona": "4159.00",
+                "p3": "770301.00",
+                "ps": null,
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2025-06-14T19:50:22.390000Z",
+                "genus": 3
+            },
+            "subspecies": [],
+            "taxonomy": "",
+            "description": "",
+            "distribution": "",
+            "seasonality": "",
+            "habitat": "",
+            "food": "",
+            "life_cycle": "",
+            "first_published_at": null,
+            "last_published_at": null
+        },
+{
+            "id": 4,
+            "title": "Papilio glaucus",
+            "slug": "papilio-glaucus",
+            "order": {
+                "id": 1,
+                "name": "Lepidoptera",
+                "common_name": "Butterflies and Moths",
+                "authority": "Linnaeus, 1758",
+                "date_created": "2024-11-17T00:37:27.071000Z",
+                "date_modified": "2024-11-17T00:37:27.071000Z"
+            },
+            "family": {
+                "id": 1,
+                "name": "Papilionidae",
+                "common_name": "Swallowtails and Parnassians",
+                "authority": "Latreille, [1802]",
+                "date_created": "2024-11-17T00:37:47.482000Z",
+                "date_modified": "2025-07-20T04:56:11.176000Z",
+                "order": 1
+            },
+            "subfamily": {
+                "id": 1,
+                "name": "Papilioninae",
+                "common_name": "Swallowtails",
+                "authority": "Latreille, [1802]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:38:59.945218Z",
+                "family": 1
+            },
+            "tribe": {
+                "id": 3,
+                "name": "Papilionini",
+                "common_name": null,
+                "authority": "Latreille, [1802]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:41:00.966013Z",
+                "subfamily": 1
+            },
+            "genus": {
+                "id": 3,
+                "name": "Papilio",
+                "common_name": null,
+                "authority": "Linnaeus, 1758",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:41:21.256714Z",
+                "tribe": 3
+            },
+            "species": {
+                "id": 4,
+                "name": "glaucus",
+                "binomial": "Papilio glaucus",
+                "common_name": "Eastern Tiger Swallowtail",
+                "authority": "Linnaeus, 1758",
+                "mona": "4176.00",
+                "p3": "770316.00",
+                "ps": null,
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2025-06-14T19:50:22.390000Z",
+                "genus": 3
+            },
+            "subspecies": [],
+            "taxonomy": "",
+            "description": "",
+            "distribution": "",
+            "seasonality": "",
+            "habitat": "",
+            "food": "",
+            "life_cycle": "",
+            "first_published_at": null,
+            "last_published_at": null
+        }
+    ]
+}

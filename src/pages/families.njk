@@ -75,8 +75,7 @@ permalink: "/orders/{{ family.order.name.toLowerCase() }}/families/{{ family.nam
                             {% if featuredImage %}
                                 <img alt="{{ featuredImage.alt_text }}" src="{{ featuredImage.file }}" />
                             {% else %}
-                                <img alt="" src="/assets/placeholder.webp" />
-                                <span class="placeholder-label" id="{{ page.genus.name }}-{{ page.species.name }}">No image</span>
+                                {% include "placeholder.njk" %}
                             {% endif %}
                             <span class="common-name">{{ page.species.common_name }}</span>
                             <span class="taxon-name"><i>{{ page.get_binomial }}</i></span>
@@ -93,7 +92,7 @@ permalink: "/orders/{{ family.order.name.toLowerCase() }}/families/{{ family.nam
         </ul>
 
         <a class="back-to-top" href="#main">
-            <img alt="" src="/assets/uxwing/arrow-top-icon-white.svg" />
+            {% include "uxwing/uxwing-arrow-top-icon.njk" %}
             Back To Top
         </a>
     {% endif %}

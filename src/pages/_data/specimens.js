@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import EleventyFetch from '@11ty/eleventy-fetch';
 import { config } from 'dotenv';
+import * as testSpecimens from './fixtures/specimens.json' with { type: 'json' };
 
 config({ path: `.env.${process.env.NODE_ENV}` });
 
 export default async function getSpecimens() {
+    if (process.env.ENV === 'ci') {
+        return testSpecimens.default.items;
+    }
+
     const sleep = (ms) => (
         /* eslint-disable-next-line no-promise-executor-return */
         new Promise((resolve) => setTimeout(resolve, ms))

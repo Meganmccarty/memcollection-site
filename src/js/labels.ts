@@ -1,20 +1,16 @@
 import { addChangeEvent, handleSubmit, resetForm } from './labels/formData';
 import { SpecimenLabel } from './types/specimen-label';
 
-/**
- * Initializes the label form, including fetching all of the specimen data
- */
+async function fetchSpecimensForLabels(): Promise<SpecimenLabel[]> {
+    const response = await fetch('/specimens-data-labels.js');
+    return response.json();
+}
+
 export async function initializeForm() {
     const form = document.getElementById('label-form');
     const clearFormBtn = form?.querySelector('button[type=reset]');
     const inputs = form?.querySelectorAll('input');
     const selects = form?.querySelectorAll('select');
-
-    async function fetchSpecimensForLabels(): Promise<SpecimenLabel[]> {
-        const response = await fetch('/specimens-data-labels.js');
-        const data = await response.json();
-        return data;
-    }
 
     const data = await fetchSpecimensForLabels();
 

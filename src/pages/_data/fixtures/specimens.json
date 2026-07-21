@@ -1,0 +1,582 @@
+{
+    "meta": {
+        "total_count": 3
+    },
+    "items": [
+        {
+            "id": 1,
+            "usi": "MEM-000001",
+            "order": {
+                "id": 7,
+                "name": "Lepidoptera",
+                "common_name": "Butterflies and Moths",
+                "authority": "Linnaeus, 1758",
+                "date_created": "2024-11-17T00:37:27.071000Z",
+                "date_modified": "2024-11-17T00:37:27.071000Z"
+            },
+            "family": {
+                "id": 45,
+                "name": "Papilionidae",
+                "common_name": "Swallowtails and Parnassians",
+                "authority": "Latreille, [1802]",
+                "date_created": "2024-11-17T00:37:47.482000Z",
+                "date_modified": "2025-07-20T04:56:11.176000Z",
+                "order": 7
+            },
+            "subfamily": {
+                "id": 85,
+                "name": "Papilioninae",
+                "common_name": "Swallowtails",
+                "authority": "Latreille, [1802]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:38:59.945218Z",
+                "family": 45
+            },
+            "tribe": {
+                "id": 165,
+                "name": "Troidini",
+                "common_name": null,
+                "authority": "Talbot, 1939",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:40:07.934532Z",
+                "subfamily": 85
+            },
+            "genus": {
+                "id": 41,
+                "name": "Battus",
+                "common_name": null,
+                "authority": "Scopoli, 1777",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:40:26.984903Z",
+                "tribe": 165
+            },
+            "species": {
+                "id": 390,
+                "name": "philenor",
+                "binomial": "Battus philenor",
+                "common_name": "Pipevine Swallowtail",
+                "authority": "(Linnaeus, 1771)",
+                "mona": "4157.00",
+                "p3": "770294.00",
+                "ps": null,
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2025-06-14T19:50:22.390000Z",
+                "genus": 41
+            },
+            "subspecies": null,
+            "taxon": {
+                "id": 390,
+                "name": "philenor",
+                "binomial": "Battus philenor",
+                "common_name": "Pipevine Swallowtail",
+                "authority": "(Linnaeus, 1771)",
+                "mona": "4157.00",
+                "p3": "770294.00",
+                "ps": null,
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2025-06-14T19:50:22.390000Z",
+                "genus": 41
+            },
+            "determiner": {
+                "id": 1,
+                "first_name": "Megan",
+                "middle_initial": "E",
+                "last_name": "McCarty",
+                "suffix": null,
+                "collector_name": "M. McCarty",
+                "full_name": "Megan E. McCarty",
+                "date_created": "2024-11-24T18:31:41.519000Z",
+                "date_modified": "2024-11-24T18:31:41.519000Z"
+            },
+            "determined_year": 2006,
+            "sex": "male",
+            "stage": "adult",
+            "preparer": {
+                "id": 1,
+                "first_name": "Megan",
+                "middle_initial": "E",
+                "last_name": "McCarty",
+                "suffix": null,
+                "collector_name": "M. McCarty",
+                "full_name": "Megan E. McCarty",
+                "date_created": "2024-11-24T18:31:41.519000Z",
+                "date_modified": "2024-11-24T18:31:41.519000Z"
+            },
+            "preparation": "spread",
+            "preparation_date": null,
+            "labels_printed": true,
+            "labeled": true,
+            "photographed": true,
+            "identified": true,
+            "collecting_trip": null,
+            "country": {
+                "id": 1,
+                "name": "United States of America",
+                "abbr": "USA",
+                "date_created": "2024-11-11T16:38:33.295000Z",
+                "date_modified": "2024-11-11T16:38:33.295000Z"
+            },
+            "state": {
+                "id": 8,
+                "name": "Indiana",
+                "abbr": "IN",
+                "date_created": "2024-11-12T02:09:06.119000Z",
+                "date_modified": "2024-11-12T02:09:06.119000Z",
+                "country": 1
+            },
+            "county": {
+                "id": 39,
+                "name": "Switzerland",
+                "abbr": "Co.",
+                "full_name": "Switzerland Co.",
+                "date_created": "2024-11-12T03:02:06.011000Z",
+                "date_modified": "2024-11-12T03:02:06.011000Z",
+                "state": 8
+            },
+            "locality": {
+                "id": 25,
+                "name": "Boone Robinson Rd",
+                "range": "4 km NW",
+                "town": "Patriot",
+                "date_created": "2024-11-15T01:57:47.058000Z",
+                "date_modified": "2024-11-15T01:57:47.058000Z",
+                "country": null,
+                "state": null,
+                "county": 39
+            },
+            "gps": {
+                "id": 71,
+                "latitude": "38.850697",
+                "longitude": "-84.865236",
+                "elevation": "254",
+                "elevation_meters": "254m",
+                "date_created": "2025-06-15T16:45:08.840000Z",
+                "date_modified": "2025-06-15T16:45:08.840000Z",
+                "locality": 25
+            },
+            "day": 26,
+            "month": "July",
+            "year": 2006,
+            "collected_date": "26-Jul-2006",
+            "full_date": "26 July 2006",
+            "num_date": "2006-07-26",
+            "collector": [
+                {
+                    "id": 1,
+                    "first_name": "Megan",
+                    "middle_initial": "E",
+                    "last_name": "McCarty",
+                    "suffix": null,
+                    "collector_name": "M. McCarty",
+                    "full_name": "Megan E. McCarty",
+                    "date_created": "2024-11-24T18:31:41.519000Z",
+                    "date_modified": "2024-11-24T18:31:41.519000Z"
+                }
+            ],
+            "collectors": "M. McCarty",
+            "method": "Net",
+            "weather": "Sunny",
+            "temperature": "96",
+            "temp_F": "96°F",
+            "temp_C": "35.6°C",
+            "time_of_day": "",
+            "habitat": "Nectaring on <em>Buddleja davidii</em> Franch.",
+            "notes": "",
+            "date_created": "2025-06-14T19:50:22.390000Z",
+            "date_modified": "2025-06-14T19:50:22.390000Z"
+        },
+        {
+            "id": 9,
+            "usi": "MEM-000009",
+            "order": {
+                "id": 7,
+                "name": "Lepidoptera",
+                "common_name": "Butterflies and Moths",
+                "authority": "Linnaeus, 1758",
+                "date_created": "2024-11-17T00:37:27.071000Z",
+                "date_modified": "2024-11-17T00:37:27.071000Z"
+            },
+            "family": {
+                "id": 45,
+                "name": "Papilionidae",
+                "common_name": "Swallowtails and Parnassians",
+                "authority": "Latreille, [1802]",
+                "date_created": "2024-11-17T00:37:47.482000Z",
+                "date_modified": "2025-07-20T04:56:11.176000Z",
+                "order": 7
+            },
+            "subfamily": {
+                "id": 85,
+                "name": "Papilioninae",
+                "common_name": "Swallowtails",
+                "authority": "Latreille, [1802]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:38:59.945218Z",
+                "family": 45
+            },
+            "tribe": {
+                "id": 140,
+                "name": "Papilionini",
+                "common_name": null,
+                "authority": "Latreille, [1802]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:41:00.966013Z",
+                "subfamily": 85
+            },
+            "genus": {
+                "id": 257,
+                "name": "Papilio",
+                "common_name": null,
+                "authority": "Linnaeus, 1758",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:41:21.256714Z",
+                "tribe": 140
+            },
+            "species": {
+                "id": 401,
+                "name": "polyxenes",
+                "binomial": "Papilio polyxenes",
+                "common_name": "Black Swallowtail",
+                "authority": "Fabricius, 1775",
+                "mona": "4159.00",
+                "p3": "770301.00",
+                "ps": null,
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2025-06-14T19:50:22.390000Z",
+                "genus": 257
+            },
+            "subspecies": null,
+            "taxon": {
+                "id": 401,
+                "name": "polyxenes",
+                "binomial": "Papilio polyxenes",
+                "common_name": "Black Swallowtail",
+                "authority": "Fabricius, 1775",
+                "mona": "4159.00",
+                "p3": "770301.00",
+                "ps": null,
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2025-06-14T19:50:22.390000Z",
+                "genus": 257
+            },
+            "determiner": {
+                "id": 1,
+                "first_name": "Megan",
+                "middle_initial": "E",
+                "last_name": "McCarty",
+                "suffix": null,
+                "collector_name": "M. McCarty",
+                "full_name": "Megan E. McCarty",
+                "date_created": "2024-11-24T18:31:41.519000Z",
+                "date_modified": "2024-11-24T18:31:41.519000Z"
+            },
+            "determined_year": 2006,
+            "sex": "male",
+            "stage": "adult",
+            "preparer": {
+                "id": 1,
+                "first_name": "Megan",
+                "middle_initial": "E",
+                "last_name": "McCarty",
+                "suffix": null,
+                "collector_name": "M. McCarty",
+                "full_name": "Megan E. McCarty",
+                "date_created": "2024-11-24T18:31:41.519000Z",
+                "date_modified": "2024-11-24T18:31:41.519000Z"
+            },
+            "preparation": "spread",
+            "preparation_date": null,
+            "labels_printed": true,
+            "labeled": true,
+            "photographed": null,
+            "identified": true,
+            "collecting_trip": null,
+            "country": {
+                "id": 1,
+                "name": "United States of America",
+                "abbr": "USA",
+                "date_created": "2024-11-11T16:38:33.295000Z",
+                "date_modified": "2024-11-11T16:38:33.295000Z"
+            },
+            "state": {
+                "id": 8,
+                "name": "Indiana",
+                "abbr": "IN",
+                "date_created": "2024-11-12T02:09:06.119000Z",
+                "date_modified": "2024-11-12T02:09:06.119000Z",
+                "country": 1
+            },
+            "county": {
+                "id": 39,
+                "name": "Switzerland",
+                "abbr": "Co.",
+                "full_name": "Switzerland Co.",
+                "date_created": "2024-11-12T03:02:06.011000Z",
+                "date_modified": "2024-11-12T03:02:06.011000Z",
+                "state": 8
+            },
+            "locality": {
+                "id": 25,
+                "name": "Boone Robinson Rd",
+                "range": "4 km NW",
+                "town": "Patriot",
+                "date_created": "2024-11-15T01:57:47.058000Z",
+                "date_modified": "2024-11-15T01:57:47.058000Z",
+                "country": null,
+                "state": null,
+                "county": 39
+            },
+            "gps": null,
+            "day": 13,
+            "month": "July",
+            "year": 2006,
+            "collected_date": "13-Jul-2006",
+            "full_date": "13 July 2006",
+            "num_date": "2006-07-13",
+            "collector": [
+                {
+                    "id": 1,
+                    "first_name": "Megan",
+                    "middle_initial": "E",
+                    "last_name": "McCarty",
+                    "suffix": null,
+                    "collector_name": "M. McCarty",
+                    "full_name": "Megan E. McCarty",
+                    "date_created": "2024-11-24T18:31:41.519000Z",
+                    "date_modified": "2024-11-24T18:31:41.519000Z"
+                }
+            ],
+            "collectors": "M. McCarty",
+            "method": "",
+            "weather": "Sunny, wet",
+            "temperature": "87",
+            "temp_F": "87°F",
+            "temp_C": "30.6°C",
+            "time_of_day": "",
+            "habitat": "Nectaring on <em>Trifolium pratense</em> L.",
+            "notes": "",
+            "date_created": "2025-06-14T19:50:22.390000Z",
+            "date_modified": "2025-06-14T19:50:22.390000Z"
+        },
+        {
+            "id": 237,
+            "usi": "MEM-000237",
+            "order": {
+                "id": 7,
+                "name": "Lepidoptera",
+                "common_name": "Butterflies and Moths",
+                "authority": "Linnaeus, 1758",
+                "date_created": "2024-11-17T00:37:27.071000Z",
+                "date_modified": "2024-11-17T00:37:27.071000Z"
+            },
+            "family": {
+                "id": 45,
+                "name": "Papilionidae",
+                "common_name": "Swallowtails and Parnassians",
+                "authority": "Latreille, [1802]",
+                "date_created": "2024-11-17T00:37:47.482000Z",
+                "date_modified": "2025-07-20T04:56:11.176000Z",
+                "order": 7
+            },
+            "subfamily": {
+                "id": 86,
+                "name": "Parnassiinae",
+                "common_name": "Parnassians",
+                "authority": "Duponchel, [1835]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:35:12.661982Z",
+                "family": 45
+            },
+            "tribe": {
+                "id": 141,
+                "name": "Parnassiini",
+                "common_name": null,
+                "authority": "Duponchel, [1835]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:36:08.012203Z",
+                "subfamily": 86
+            },
+            "genus": {
+                "id": 259,
+                "name": "Parnassius",
+                "common_name": null,
+                "authority": "Latreille, 1804",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:37:47.320516Z",
+                "tribe": 141
+            },
+            "species": {
+                "id": 451,
+                "name": "smintheus",
+                "binomial": "Parnassius smintheus",
+                "common_name": "Rocky Mountain Parnassian",
+                "authority": "Doubleday, 1847",
+                "mona": "4155.20",
+                "p3": "770291.00",
+                "ps": null,
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2025-06-14T19:50:22.390000Z",
+                "genus": 259
+            },
+            "subspecies": null,
+            "taxon": {
+                "id": 451,
+                "name": "smintheus",
+                "binomial": "Parnassius smintheus",
+                "common_name": "Rocky Mountain Parnassian",
+                "authority": "Doubleday, 1847",
+                "mona": "4155.20",
+                "p3": "770291.00",
+                "ps": null,
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2025-06-14T19:50:22.390000Z",
+                "genus": 259
+            },
+            "determiner": {
+                "id": 1,
+                "first_name": "Megan",
+                "middle_initial": "E",
+                "last_name": "McCarty",
+                "suffix": null,
+                "collector_name": "M. McCarty",
+                "full_name": "Megan E. McCarty",
+                "date_created": "2024-11-24T18:31:41.519000Z",
+                "date_modified": "2024-11-24T18:31:41.519000Z"
+            },
+            "determined_year": 2012,
+            "sex": "male",
+            "stage": "adult",
+            "preparer": {
+                "id": 1,
+                "first_name": "Megan",
+                "middle_initial": "E",
+                "last_name": "McCarty",
+                "suffix": null,
+                "collector_name": "M. McCarty",
+                "full_name": "Megan E. McCarty",
+                "date_created": "2024-11-24T18:31:41.519000Z",
+                "date_modified": "2024-11-24T18:31:41.519000Z"
+            },
+            "preparation": "spread",
+            "preparation_date": null,
+            "labels_printed": true,
+            "labeled": null,
+            "photographed": null,
+            "identified": true,
+            "collecting_trip": {
+                "id": 7,
+                "name": "LepSoc 2012",
+                "slug": "lepsoc-2012",
+                "states": [
+                    {
+                        "id": 4,
+                        "name": "Colorado",
+                        "abbr": "CO",
+                        "date_created": "2024-11-12T02:22:58.370000Z",
+                        "date_modified": "2024-11-12T02:22:58.370000Z",
+                        "country": 1
+                    },
+                    {
+                        "id": 12,
+                        "name": "Missouri",
+                        "abbr": "MO",
+                        "date_created": "2024-11-12T02:24:33.855000Z",
+                        "date_modified": "2024-11-12T02:24:33.855000Z",
+                        "country": 1
+                    }
+                ],
+                "start_date": "2012-07-21",
+                "end_date": "2012-07-29",
+                "notes": "",
+                "date_created": "2025-06-14T02:33:32.205000Z",
+                "date_modified": "2025-06-14T02:33:32.205000Z"
+            },
+            "country": {
+                "id": 1,
+                "name": "United States of America",
+                "abbr": "USA",
+                "date_created": "2024-11-11T16:38:33.295000Z",
+                "date_modified": "2024-11-11T16:38:33.295000Z"
+            },
+            "state": {
+                "id": 4,
+                "name": "Colorado",
+                "abbr": "CO",
+                "date_created": "2024-11-12T02:22:58.370000Z",
+                "date_modified": "2024-11-12T02:22:58.370000Z",
+                "country": 1
+            },
+            "county": {
+                "id": 17,
+                "name": "Clear Creek",
+                "abbr": "Co.",
+                "full_name": "Clear Creek Co.",
+                "date_created": "2024-11-12T02:59:47.247000Z",
+                "date_modified": "2024-11-12T02:59:47.247000Z",
+                "state": 4
+            },
+            "locality": {
+                "id": 233,
+                "name": "US Rt 6, Loveland Pass, White River NF",
+                "range": "9 km N",
+                "town": "Montezuma",
+                "date_created": "2025-06-14T21:14:37.386000Z",
+                "date_modified": "2025-06-14T21:14:37.386000Z",
+                "country": null,
+                "state": null,
+                "county": 17
+            },
+            "gps": {
+                "id": 380,
+                "latitude": "39.664472",
+                "longitude": "-105.878444",
+                "elevation": "3659",
+                "elevation_meters": "3659m",
+                "date_created": "2025-07-14T01:32:13.660000Z",
+                "date_modified": "2025-07-14T01:32:13.660000Z",
+                "locality": 233
+            },
+            "day": 23,
+            "month": "July",
+            "year": 2012,
+            "collected_date": "23-Jul-2012",
+            "full_date": "23 July 2012",
+            "num_date": "2012-07-23",
+            "collector": [
+                {
+                    "id": 2,
+                    "first_name": "David",
+                    "middle_initial": "E",
+                    "last_name": "McCarty",
+                    "suffix": null,
+                    "collector_name": "D. McCarty",
+                    "full_name": "David E. McCarty",
+                    "date_created": "2025-06-14T19:13:21.916000Z",
+                    "date_modified": "2025-06-14T19:13:21.916000Z"
+                },
+                {
+                    "id": 1,
+                    "first_name": "Megan",
+                    "middle_initial": "E",
+                    "last_name": "McCarty",
+                    "suffix": null,
+                    "collector_name": "M. McCarty",
+                    "full_name": "Megan E. McCarty",
+                    "date_created": "2024-11-24T18:31:41.519000Z",
+                    "date_modified": "2024-11-24T18:31:41.519000Z"
+                }
+            ],
+            "collectors": "D. McCarty, M. McCarty",
+            "method": "Net",
+            "weather": "",
+            "temperature": "",
+            "temp_F": "",
+            "temp_C": "",
+            "time_of_day": "",
+            "habitat": "",
+            "notes": "",
+            "date_created": "2025-06-14T19:50:22.390000Z",
+            "date_modified": "2025-06-14T19:50:22.390000Z"
+        }
+    ]
+}

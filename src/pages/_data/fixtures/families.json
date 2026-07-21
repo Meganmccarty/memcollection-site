@@ -1,0 +1,71 @@
+{
+    "meta": {
+        "total_count": 4
+    },
+    "items": [
+        {
+            "id": 1,
+            "name": "Noctuidae",
+            "common_name": "Owlet Moths",
+            "authority": "Latreille, 1809",
+            "date_created": "2025-06-14T19:27:35.291000Z",
+            "date_modified": "2025-06-14T19:27:35.291000Z",
+            "order": {
+                "id": 7,
+                "name": "Lepidoptera",
+                "common_name": "Butterflies and Moths",
+                "authority": "Linnaeus, 1758",
+                "date_created": "2024-11-17T00:37:27.071000Z",
+                "date_modified": "2024-11-17T00:37:27.071000Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Nymphalidae",
+            "common_name": "Brush-footed Butterflies",
+            "authority": "Rafinesque, 1815",
+            "date_created": "2025-06-14T19:28:38.357000Z",
+            "date_modified": "2026-01-10T21:33:35.605018Z",
+            "order": {
+                "id": 7,
+                "name": "Lepidoptera",
+                "common_name": "Butterflies and Moths",
+                "authority": "Linnaeus, 1758",
+                "date_created": "2024-11-17T00:37:27.071000Z",
+                "date_modified": "2024-11-17T00:37:27.071000Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Papilionidae",
+            "common_name": "Swallowtails and Parnassians",
+            "authority": "Latreille, [1802]",
+            "date_created": "2024-11-17T00:37:47.482000Z",
+            "date_modified": "2025-07-20T04:56:11.176000Z",
+            "order": {
+                "id": 7,
+                "name": "Lepidoptera",
+                "common_name": "Butterflies and Moths",
+                "authority": "Linnaeus, 1758",
+                "date_created": "2024-11-17T00:37:27.071000Z",
+                "date_modified": "2024-11-17T00:37:27.071000Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Saturniidae",
+            "common_name": "Giant Silk Moths",
+            "authority": "Boisduval, [1837]",
+            "date_created": "2025-06-14T19:30:27.309000Z",
+            "date_modified": "2026-01-10T21:35:52.564447Z",
+            "order": {
+                "id": 7,
+                "name": "Lepidoptera",
+                "common_name": "Butterflies and Moths",
+                "authority": "Linnaeus, 1758",
+                "date_created": "2024-11-17T00:37:27.071000Z",
+                "date_modified": "2024-11-17T00:37:27.071000Z"
+            }
+        }
+    ]
+}

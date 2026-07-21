@@ -1,8 +1,8 @@
 #label-form {
-    align-items: flex-end;
-    background-color: var(--off-black);
+    align-items: stretch;
+    background-color: var(--w-color-surface-dashboard-panel);
     border-radius: 0.625rem;
-    color: var(--off-white);
+    color: var(--w-color-text-context);
     display: flex;
     flex-direction: column;
     padding: 0.25rem 0.5rem;
@@ -10,7 +10,7 @@
 
     fieldset {
         align-items: flex-start;
-        border: 2px solid var(--medium-green-level-1);
+        border: 0.125rem solid var(--w-color-border-furniture);
         display: flex;
         flex-flow: row wrap;
         font-size: 1.25rem;
@@ -18,25 +18,31 @@
         margin: 0.25rem;
 
         label {
-            align-items: center;
-            border-right: 1px solid var(--medium-gray-level-1);
+            align-items: flex-start;
             display: flex;
-            flex-direction: row;
-            font-size: 0.8rem;
-            height: 2.5rem;
-            justify-content: space-between;
-            padding: 0 0.5rem;
+            flex-direction: column;
+            font-size: 1rem;
+            min-height: 2.5rem;
+            margin: 0 1rem;
 
             input,
             select {
-                border: none;
+                background-color: var(--w-color-surface-field);
+                border: 0.0625rem solid var(--w-color-border-field-default);
                 border-radius: 0.25rem;
-                margin: 0 0 0 0.5rem;
+                font-size: 0.875rem;
+                height: 2.125rem;
+                line-height: 1.5rem;
+                margin: 0.5rem 0 1rem;
                 padding: 0.25rem;
-                width: 50%;
+                width: 100%;
+
+                &:hover {
+                    accent-color: var(--w-color-surface-button-hover);
+                }
 
                 &:focus-visible {
-                    outline: var(--light-green-level-1) solid 0.125rem;
+                    outline: var(--w-color-focus) 0.125rem solid;
                     outline-offset: 0.125rem;
                 }
             }
@@ -46,91 +52,72 @@
     .form-buttons {
         display: flex;
         flex-direction: row;
+        justify-content: flex-end;
 
         button {
-            border: none;
-            color: var(--off-white);
             font-size: 1rem;
             margin: 0.25rem;
             padding: 0.375rem 0.625rem;
-
-            &:focus-visible,
-            &:hover {
-                color: var(--off-black);
-            }
-
-            &:focus-visible {
-                outline-offset: 0.125rem;
-            }
-        }
-
-        button[type='submit'] {
-            background-color: var(--dark-green-level-3);
-
-            &:focus-visible,
-            &:hover {
-                background-color: var(--medium-green-level-3);
-            }
-
-            &:focus-visible {
-                outline: var(--light-green-level-1) solid 0.125rem;
-            }
         }
 
         button[type='reset'] {
-            background-color: var(--medium-pink-level-1);
+            background-color: transparent;
+            border: 0.0625rem solid var(--w-color-critical-100);
+            color: var(	--w-color-critical-100);
 
             &:focus-visible,
             &:hover {
-                background-color: var(--light-pink-level-2);
-            }
-
-            &:focus-visible {
-                outline: var(--light-pink-level-2) solid 0.125rem;
+                background-color: light-dark(var(--w-color-critical-100), transparent);
+                border: 0.0625rem solid light-dark(var(--w-color-critical-200), var(--w-color-grey-50));
+                color: var(--w-color-text-button);
             }
         }
     }
 }
 
 #label-output {
-    align-items: flex-start;
-    background-color: var(--white);
-    color: var(--black);
+    align-items: stretch;
+    color: var(--w-color-text-context);
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
     margin: 0.75rem 1.5rem;
-
+    
     .single-label {
         align-items: center;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-
+        
         p {
-            color: var(--black);
             margin: 0;
         }
-
+        
         .label-locality,
         .label-notes,
         .label-taxonomy {
-            border: 1.5px solid var(--black);
+            background-color: var(--w-color-surface-dashboard-panel);
+            border: 0.125rem solid var(--w-color-border-furniture);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            margin: 0.5px;
-            padding: 0.48px 0.72px;
-            width: 82px;
+            margin: 0.125rem;
+            padding: 0.03rem 0.045rem;
         }
-
+        
         .label-locality {
             align-items: flex-start;
+            max-width: 15.375rem;
         }
-
+        
         .label-notes,
         .label-taxonomy {
             align-items: center;
+            max-width: 10.375rem;
+        }
+
+        .label-taxonomy {
+            margin: 0 0 1rem;
         }
 
         .label-locality span,
@@ -138,9 +125,7 @@
         .label-notes p,
         .label-taxonomy span {
             font-family: Geneva, sans-serif;
-            font-size: 3pt;
-            letter-spacing: -0.05px;
-            line-height: 1.6;
+            font-size: 0.75rem;
             width: 100%;
         }
 
@@ -152,7 +137,7 @@
         .label-notes span,
         .label-notes p,
         .label-taxonomy span {
-            text-align: center;
+            text-align: left;
         }
 
         .label-usi {
@@ -165,22 +150,7 @@
     #label-form {
         fieldset {
             label {
-                width: 23.7%;
-            }
-
-            /* To style element in 1st column (out of 4),
-               need to add +2 to account for legend */
-            label:nth-child(4n+2),
-            label:nth-child(8n+2) {
-                padding: 0 0.5rem 0 0;
-            }
-
-            /* To style last element in 4th column,
-               need to add +1 to account for legend */
-            label:nth-child(4n+1),
-            label:nth-child(8n+1) {
-                border: none;
-                padding: 0 0 0 0.5rem;
+                width: 21%;
             }
         }
     }
@@ -190,61 +160,45 @@
     #label-form {
         fieldset {
             label {
-                width: 31.9%;
-            }
-
-            /* To style element in 1st column (out of 3),
-               need to add +2 to account for legend */
-            label:nth-child(3n+2),
-            label:nth-child(6n+2),
-            label:nth-child(9n+2) {
-                padding: 0 0.5rem 0 0;
-            }
-
-            /* To style last element in 3rd column,
-               need to add +1 to account for legend */
-            label:nth-child(3n+1),
-            label:nth-child(6n+1),
-            label:nth-child(9n+1) {
-                border: none;
-                padding: 0 0 0 0.5rem;
+                width: 29%;
             }
         }
     }
 }
 
-@media (min-width: 530px) and (max-width: 899px) {
+@media (min-width: 650px) and (max-width: 899px) {
     #label-form {
         fieldset {
             label {
-                border: none;
-                min-width: 11.5rem;
-                padding: 0;
-                width: 47.9%;
-            }
+                font-size: 1.25rem;
+                min-height: 3rem;
+                width: 44%;
 
-            /* Odd numbered labels are considered even
-               (and vice versa) due to legend */
-            label:nth-child(even) {
-                border-right: 1px solid var(--medium-gray-level-1);
-                padding: 0 0.5rem 0 0;
-            }
-
-            label:nth-child(odd) {
-                padding: 0 0 0 0.5rem;
+                input,
+                select {
+                    height: 2.625rem;
+                    line-height: 2rem;
+                    font-size: 1rem;
+                }
             }
         }
     }
 }
 
-@media (max-width: 529px) {
+@media (max-width: 649px) {
     #label-form {
         fieldset {
             label {
-                border: none;
-                min-width: 11.5rem;
-                padding: 0;
+                font-size: 1.25rem;
+                min-height: 3rem;
                 width: 100%;
+
+                input,
+                select {
+                    height: 2.625rem;
+                    line-height: 2rem;
+                    font-size: 1rem;
+                }
             }
         }
     }
@@ -258,22 +212,145 @@
         display: none;
     }
 
-    #label-output {
-        display: block;
-        overflow-wrap: normal;
-        margin: 0;
+    // #label-output {
+    //     background-color: var(--white);
+    //     color: var(--black);
+    //     display: block;
+    //     margin: 0;
+    //     overflow-wrap: normal;
 
+    //     .single-label {
+    //         break-after: avoid;
+    //         break-before: avoid;
+    //         break-inside: avoid;
+    //         display: inline-block;
+    //         margin: 0;
+
+    //         p {
+    //             color: var(--black);
+    //             margin: 0;
+    //         }
+
+    //         .label-locality,
+    //         .label-notes,
+    //         .label-taxonomy {
+    //             border: 1.5px solid var(--black);
+    //             display: flex;
+    //             flex-direction: column;
+    //             justify-content: center;
+    //             margin: 1px 0.5px;
+    //             padding: 0.48px 0.72px;
+    //             max-width: 82px;
+    //         }
+
+    //         .label-locality {
+    //             align-items: flex-start;
+    //         }
+
+    //         .label-notes,
+    //         .label-taxonomy {
+    //             align-items: center;
+    //         }
+
+    //         .label-locality span,
+    //         .label-notes span,
+    //         .label-notes p,
+    //         .label-taxonomy span {
+    //             font-family: Geneva, sans-serif;
+    //             font-size: 3pt;
+    //             letter-spacing: -0.05px;
+    //             line-height: 1.6;
+    //             width: 100%;
+    //         }
+
+    //         .label-locality span {
+    //             margin: 0;
+    //             padding: 0;
+    //         }
+
+    //         .label-notes span,
+    //         .label-notes p,
+    //         .label-taxonomy span {
+    //             text-align: center;
+    //         }
+
+    //         .label-usi {
+    //             text-align: right;
+    //         }
+    //     }
+    // }
+
+    #label-output {
+        align-items: stretch;
+        background-color: var(--white);
+        color: var(--black);
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        margin: 0;
+        
         .single-label {
+            // display: inline-block;
             break-after: avoid;
             break-before: avoid;
             break-inside: avoid;
-            display: inline-block;
             margin: 0;
-
+            
+            p {
+                color: var(--black);
+                margin: 0;
+            }
+            
             .label-locality,
             .label-notes,
             .label-taxonomy {
+                border: 1px solid var(--black);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
                 margin: 1px 0.5px;
+                padding: 0.75px 1px;
+            }
+            
+            .label-locality {
+                align-items: flex-start;
+                max-width: 82px;
+            }
+            
+            .label-notes,
+            .label-taxonomy {
+                align-items: center;
+                max-width: 55.333px;
+            }
+
+            // .label-taxonomy {
+            //     margin: 0 0 1rem;
+            // }
+
+            .label-locality span,
+            .label-notes span,
+            .label-notes p,
+            .label-taxonomy span {
+                font-family: Geneva, sans-serif;
+                font-size: 3pt;
+                letter-spacing: -0.05px;
+                line-height: 1.6;
+                width: 100%;
+            }
+
+            .label-locality span {
+                margin: 0;
+                padding: 0;
+            }
+
+            .label-notes span,
+            .label-notes p,
+            .label-taxonomy span {
+                text-align: left;
+            }
+
+            .label-usi {
+                text-align: right;
             }
         }
     }
