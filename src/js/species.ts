@@ -112,7 +112,7 @@ export function createCard(page: SpeciesPage): HTMLLIElement {
 
     // Create the link to the species page
     const link = document.createElement('a');
-    link.href = `/${page.order.name.toLowerCase()}/${page.family.name.toLowerCase()}/${page.slug}`;
+    link.href = `/orders/${page.order.name.toLowerCase()}/${page.family.name.toLowerCase()}/${page.slug}`;
     card.appendChild(link);
 
     // For now, we are hard-coding the placeholder image to display in the card

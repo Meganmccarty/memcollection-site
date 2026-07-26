@@ -1,23 +1,22 @@
+#empty-taxon {
+    color: var(--w-color-text-context);
+    margin: 2rem 0 0 1.5rem;
+}
+
 ul.taxonomy-list {
-    // display: grid;
-    // gap: 1rem;
-    // grid-template-columns: repeat(auto-fill, 15rem);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    // justify-content: center;
     list-style: none;
     margin: 1rem 0 0.5rem;
     padding: 0 1rem;
 
     li {
         background-color: var(--w-color-surface-dashboard-panel);
-        // border: 0.0.625rem solid var(--w-color-border-furniture);
-        // border: 0.125rem solid var(--w-color-border-furniture);
         border: 0.125rem solid var(--w-color-border-furniture);
         border-radius: 0.25rem;
         margin: 0.25rem;
-        min-height: 14rem;
+        min-height: 14.75rem;
         width: 13.5rem;
 
         a {
@@ -25,8 +24,9 @@ ul.taxonomy-list {
             color: var(--w-color-text-context);
             display: flex;
             flex-direction: column;
-            font-size: 1.125rem;
-            min-height: 14rem;
+            font-size: 1.0625rem;
+            height: 100%;
+            min-height: 14.75rem;
             justify-content: flex-start;
             text-decoration: none;
 
@@ -42,7 +42,6 @@ ul.taxonomy-list {
             }
 
             svg {
-                // border: 0.125rem solid var(--w-color-border-furniture);
                 height: auto;
                 margin: 0.75rem 0;
                 width: 13.5rem;
@@ -53,6 +52,63 @@ ul.taxonomy-list {
                 text-align: center;
             }
 
+            .taxon-numbers {
+                display: flex;
+                flex-direction: row;
+                font-size: 0.75rem;
+                justify-content: space-around;
+                margin: 0.75rem 0;
+                width: 100%;
+
+                .ps,
+                .mona {
+                    border-radius: 0.25rem;
+                    padding: 0.25rem 0.5rem;
+                }
+            }
         }
+    }
+}
+
+#toc {
+    background-color: var(--w-color-surface-dashboard-panel);
+    border: 0.125rem solid var(--w-color-border-furniture);
+    border-radius: 0.25rem;
+    color: var(--w-color-text-context);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0.75rem 1.25rem 2rem;
+    padding: 1rem;
+
+    &.hide {
+        display: none;
+    }
+
+    ul {
+        align-items: center;
+        display: flex;
+        flex-flow: row wrap;
+        list-style: none;
+        margin: 0.25rem 0 0;
+        padding: 0;
+
+        li {
+            margin: 0.25rem 1.55rem .25rem 0;
+        }
+    }
+}
+
+.back-to-top {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin: 0 1.5rem 2.5rem;
+    width: fit-content;
+
+    svg {
+        height: auto;
+        margin: 0 0.5rem 0 0;
+        width: 0.5rem;
     }
 }

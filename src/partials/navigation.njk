@@ -28,22 +28,6 @@
             <li>
                 <a href="/species">Species</a>
             </li>
-            <li class="dropdown-list-item">
-                <button aria-controls="pages-dropdown"
-                        aria-expanded="false"
-                        id="pages-button">
-                    Pages
-                    <img alt="" class="icon-chevron-down" height="8.16" src="/assets/uxwing/chevron-down-icon-white.svg" width="14" />
-                    <img alt="" class="icon-chevron-up hide" height="8.16" src="/assets/uxwing/chevron-up-icon-white.svg" width="14" />
-                </button>
-                <ul class="hide" id="pages-dropdown">
-                    {% for order in orders %}
-                    <li>
-                        <a href="/{{ order.name.toLowerCase() }}" tabindex="-1">{{ order.name }}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </li>
             <li>
                 <a href="/labels">Labels</a>
             </li>

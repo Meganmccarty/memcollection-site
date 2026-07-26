@@ -198,7 +198,7 @@ describe('createCard', () => {
     it('contains a link to the correct species page URL', () => {
         const card = createCard(makePage());
         const link = card.querySelector('a');
-        expect(link?.getAttribute('href')).toBe('/lepidoptera/papilionidae/battus-philenor');
+        expect(link?.getAttribute('href')).toBe('/orders/lepidoptera/papilionidae/battus-philenor');
     });
 
     it('displays the common name when one is present', () => {

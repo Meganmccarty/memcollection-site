@@ -9,8 +9,7 @@ description: Browse species pages on the MEM Collection site.
 layout: layout.njk
 css: [
     'rel=stylesheet href=/css/accessible-autocomplete.css',
-    'rel=stylesheet href=/css/species.css',
-    'rel=stylesheet href=/css/families.css'
+    'rel=stylesheet href=/css/species.css'
 ]
 js: [
     'defer src=/js/species.js type=module',
@@ -18,6 +17,12 @@ js: [
 ]
 ---
 <h1>Browse Species</h1>
+
+<p>
+    Use the form below to search for species pages that are represented in the collection. 
+    Alternatively, you can browse by a <a href="/orders/">list of orders</a> and drill down into
+    families and then species pages.
+</p>
 
 <form aria-describedby="search-description" aria-labelledby="search-label" class="filters">
     <span hidden id="search-label">Species Page Search</span>
