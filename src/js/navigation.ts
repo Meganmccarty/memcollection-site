@@ -1,5 +1,4 @@
 import { trapFocus } from './utilities/trapFocus';
-import { manageDropdownTabIndex, toggleDropdown } from './navigation/navDropdown';
 import { checkMenu, toggleMenu } from './navigation/navMenu';
 
 export function initializeNavigation() {
@@ -8,8 +7,6 @@ export function initializeNavigation() {
     const menu = document.getElementById('menu');
     const openMenuBtn = document.getElementById('open-menu');
     const overlay = document.getElementById('overlay');
-    const pagesBtn = document.getElementById('pages-button');
-    const pagesDropdown = document.getElementById('pages-dropdown');
 
     if (menu && overlay) {
         // Ensure correct menu (desktop or mobile) is shown when page loaded
@@ -32,20 +29,10 @@ export function initializeNavigation() {
         });
     }
 
-    if (pagesDropdown) {
-        // Add event listener to pages dropdown button
-        pagesBtn?.addEventListener('click', () => toggleDropdown(pagesBtn, pagesDropdown));
-    }
-
-    /* Add event listener to trap focus to mobile menu (if open)
-       and navigation dropdown links with arrow keys */
+    /* Add event listener to trap focus to mobile menu (if open) */
     document.addEventListener('keydown', (e) => {
         if (window.innerWidth < 900 && menu?.classList.contains('show')) {
             trapFocus(e, menu);
-        }
-
-        if (pagesDropdown && !pagesDropdown?.classList.contains('hide')) {
-            manageDropdownTabIndex(e, pagesDropdown);
         }
     });
 }

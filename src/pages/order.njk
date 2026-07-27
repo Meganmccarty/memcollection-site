@@ -1,0 +1,39 @@
+---
+pagination:
+    data: orders
+    size: 1
+    alias: order
+    addAllPagesToCollections: true
+eleventyComputed:
+    title: "{{ order.name }} | MEMC"
+    description: "The detail page for the order {{ order.name }}"
+layout: layout.njk
+css: ['rel=stylesheet href=/css/shared-styles/taxon.css']
+js: [
+    'defer src=/js/orders.js type=module',
+    'defer src=/js/orders.legacy.js nomodule'
+]
+permalink: "/orders/{{ order.name.toLowerCase() }}/"
+---
+
+<h1>{{ order.name }} {{ order.authority }} – {{ order.common_name }}</h1>
+<p class="hide" id="empty-taxon">There are no family pages in this order.</p>
+
+<span id="family-list-label" hidden>Families</span>
+<ul aria-labelledby="family-list-label" class="taxonomy-list">
+    {% for family in families %}
+        {% if family.order.name === order.name %}
+            <li>
+                <a href="/orders/{{ order.name.toLowerCase() }}/{{ family.name.toLowerCase() }}/">
+                    {% set featuredImage = insectImages | findFeaturedByFamily(family.name) %}
+                    {% if featuredImage %}
+                        <img alt="{{ featuredImage.alt_text }}" src="{{ featuredImage.file }}" />
+                    {% else %}
+                        {% include "placeholder.njk" %}
+                    {% endif %}
+                    <span class="taxon-name">{{ family.name }}</span>
+                </a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>

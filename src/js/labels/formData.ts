@@ -2,6 +2,8 @@ import { SpecimenLabel } from '../types/specimen-label';
 import { transformData } from './transformData';
 
 interface LabelForm {
+    usi_mode: 'none' | 'include' | 'exclude';
+    usi_input_text: string;
     order: string,
     family: string,
     subfamily: string,
@@ -12,7 +14,6 @@ interface LabelForm {
     determiner_firstname: string,
     determiner_lastname: string,
     determined_year: number | '',
-    usi: string,
     preparer_firstname: string,
     preparer_lastname: string,
     preparation: string,
@@ -48,6 +49,8 @@ type LabelFormKey = keyof LabelForm;
 type FilterableKey = keyof LabelForm & keyof SpecimenLabel;
 
 const emptyFormObject: LabelForm = {
+    usi_mode: 'none',
+    usi_input_text: '',
     order: '',
     family: '',
     subfamily: '',
@@ -58,7 +61,6 @@ const emptyFormObject: LabelForm = {
     determiner_firstname: '',
     determiner_lastname: '',
     determined_year: '',
-    usi: '',
     preparer_firstname: '',
     preparer_lastname: '',
     preparation: '',
@@ -93,7 +95,20 @@ const emptyFormObject: LabelForm = {
 let formData: LabelForm = { ...emptyFormObject };
 
 /**
+ * Updates the USI filter mode and list
+ * @param usiInputText - The user's input text
+ */
+export function setUsiFilter(usiInputText: string) {
+    return new Set(
+        usiInputText
+            .split(',')
+            .map((usi: string) => usi.trim()),
+    );
+}
+
+/**
  * Adds an onChange event listener to each input/select element within the label form
+ * @param elements - A Node list of input elements to watch for changes
  */
 export function addChangeEvent(
     elements: NodeListOf<HTMLInputElement> | NodeListOf<HTMLSelectElement>,
@@ -110,6 +125,11 @@ export function addChangeEvent(
 
 let submitTimeout: NodeJS.Timeout;
 
+/**
+ * Handles the submitting of the label generator form
+ * @param event - The submit event
+ * @param data - The data in the form
+ */
 export async function handleSubmit(event: SubmitEvent, data: SpecimenLabel[]) {
     event.preventDefault();
 
@@ -119,12 +139,29 @@ export async function handleSubmit(event: SubmitEvent, data: SpecimenLabel[]) {
     // submit button (puts a short delay between button clicks). When the form first submits, any
     // previous timeout is cleared above.
     submitTimeout = setTimeout(() => {
-        // Filter out the formData above to remove any keys that have empty values
-        // (as we will only filter on what the user entered). Using .reduce() to build a single
+        let workingData = data;
+
+        if (formData.usi_mode === 'include' && formData.usi_input_text.length > 0) {
+            workingData = workingData.filter((specimen) => (
+                setUsiFilter(formData.usi_input_text).has(specimen.usi)
+            ));
+        } else if (formData.usi_mode === 'exclude' && formData.usi_input_text.length > 0) {
+            workingData = workingData.filter((specimen) => (
+                !setUsiFilter(formData.usi_input_text).has(specimen.usi)
+            ));
+        }
+
+        // Filter out the formData to remove any keys that have empty values
+        // (as we will only filter on what the user entered) and exclude USI fields
+        // (USI filtering is already done above). Using .reduce() to build a single
         // object containing only keys with values
         const filteredFormData = (
             Object.keys(formData) as LabelFormKey[]
         ).reduce<Partial<LabelForm>>((r, key) => {
+            // Skip USI-related fields - they're handled separately
+            if (key === 'usi_mode' || key === 'usi_input_text') {
+                return r;
+            }
             if (formData[key]) {
                 return { ...r, [key]: formData[key] };
             }
@@ -137,9 +174,9 @@ export async function handleSubmit(event: SubmitEvent, data: SpecimenLabel[]) {
         // Else, we filter the specimens using the filteredFormData that the user has entered,
         // and we create labels for only those filtered specimens.
         if (Object.keys(filteredFormData).length === 0) {
-            transformData(data);
+            transformData(workingData);
         } else {
-            const filteredSpecimens = data.filter((specimen: SpecimenLabel) => (
+            const filteredSpecimens = workingData.filter((specimen: SpecimenLabel) => (
                 Object.entries(filteredFormData) as [
                     FilterableKey,
                     LabelForm[FilterableKey],

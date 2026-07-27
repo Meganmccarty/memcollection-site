@@ -40,7 +40,11 @@ const mockMapInstance = {
     })),
     getZoom: jest.fn(() => 13),
 };
-const mockMarkerInstance = { addTo: mockAddTo, bindPopup: mockBindPopup };
+const mockMarkerInstance = {
+    addTo: mockAddTo,
+    bindPopup: mockBindPopup,
+    getElement: jest.fn().mockReturnValue(document.createElement('img')),
+};
 const mockLayerGroup = { clearLayers: mockClearLayers, addTo: mockAddTo };
 
 jest.mock('leaflet', () => ({
