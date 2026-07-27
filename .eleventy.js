@@ -21,6 +21,7 @@ export default function(eleventyConfig) {
     });
 
     eleventyConfig.addPassthroughCopy({ 'src/public': '/assets' });
+    eleventyConfig.addPassthroughCopy({ 'src/.htaccess': '.htaccess' });
       
     // function generateScript(src) {
     //     return `
