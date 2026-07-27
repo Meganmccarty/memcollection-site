@@ -25,6 +25,21 @@ js: [
 <form aria-labelledby="label-label" class="no-print" id="label-form">
     <span hidden id="label-label">Label Generator</span>
     <fieldset>
+        <legend>USI Filter (Optional)</legend>
+        <label for="usi-list-input">
+            List of USIs to Filter
+            <input type="tex" id="usi-list-input" name="usi_input_text"></input>
+        </label>
+        <label for="usi-mode-input">
+            USI Filter Mode
+            <select id="usi-mode-input" name="usi_mode">
+                <option>none</option>
+                <option>include</option>
+                <option>exclude</option>
+            </select>
+        </label>
+    </fieldset>
+    <fieldset>
         <legend>Taxonomy</legend>
         <label for="order-input">
             Order
@@ -69,10 +84,6 @@ js: [
     </fieldset>
     <fieldset>
         <legend>Specimen Info</legend>
-        <label for="usi-input">
-            Unique Specimen Identifier (USI)
-            <input id="usi-input" inputmode="text" name="usi" type="text"/>
-        </label>
         <label for="preparer-first-name-input">
             Preparer First Name
             <input id="preparer-first-name-input" inputmode="text" name="preparer_firstname" type="text"/>
