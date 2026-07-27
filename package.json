@@ -44,6 +44,7 @@
   ],
   "dependencies": {
     "@11ty/eleventy-fetch": "^5.1.1",
+    "accessible-autocomplete": "^3.0.1",
     "cypress": "^15.16.0",
     "cypress-axe": "^1.7.0",
     "dotenv": "^17.4.2",

@@ -63,6 +63,10 @@ export function getSpecimensWithGPS(specimens: Specimen[]): Specimen[] {
         // Add the newly-created marker to the markerGroup layer
         // (Makes it easy to clear the layer whenever specimens are filtered)
         marker.addTo(markerGroup);
+        const markerElement = marker.getElement();
+        if (markerElement) {
+            markerElement.setAttribute('aria-label', `${specimen.usi}`);
+        }
     });
 }
 
@@ -581,4 +585,4 @@ export async function initializePage() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', async () => initializePage);
+document.addEventListener('DOMContentLoaded', async () => initializePage());
