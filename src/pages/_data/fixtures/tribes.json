@@ -1,0 +1,135 @@
+{
+    "meta": {
+        "total_count": 4
+    },
+    "items": [
+        {
+            "id": 165,
+            "name": "Troidini",
+            "common_name": null,
+            "authority": "Talbot, 1939",
+            "date_created": "2025-06-14T19:50:22.390000Z",
+            "date_modified": "2026-01-19T01:40:07.934532Z",
+            "subfamily": {
+                "id": 85,
+                "name": "Papilioninae",
+                "common_name": "Swallowtails",
+                "authority": "Latreille, [1802]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:38:59.945218Z",
+                "family": {
+                    "id": 45,
+                    "name": "Papilionidae",
+                    "common_name": "Swallowtails and Parnassians",
+                    "authority": "Latreille, [1802]",
+                    "date_created": "2024-11-17T00:37:47.482000Z",
+                    "date_modified": "2025-07-20T04:56:11.176000Z",
+                    "order": {
+                        "id": 7,
+                        "name": "Lepidoptera",
+                        "common_name": "Butterflies and Moths",
+                        "authority": "Linnaeus, 1758",
+                        "date_created": "2024-11-17T00:37:27.071000Z",
+                        "date_modified": "2024-11-17T00:37:27.071000Z"
+                    }
+                }
+            }
+        },
+        {
+            "id": 117,
+            "name": "Leptocircini",
+            "common_name": null,
+            "authority": "Kirby, 1896",
+            "date_created": "2025-06-14T19:50:22.390000Z",
+            "date_modified": "2026-01-19T01:39:14.458224Z",
+            "subfamily": {
+                "id": 85,
+                "name": "Papilioninae",
+                "common_name": "Swallowtails",
+                "authority": "Latreille, [1802]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:38:59.945218Z",
+                "family": {
+                    "id": 45,
+                    "name": "Papilionidae",
+                    "common_name": "Swallowtails and Parnassians",
+                    "authority": "Latreille, [1802]",
+                    "date_created": "2024-11-17T00:37:47.482000Z",
+                    "date_modified": "2025-07-20T04:56:11.176000Z",
+                    "order": {
+                        "id": 7,
+                        "name": "Lepidoptera",
+                        "common_name": "Butterflies and Moths",
+                        "authority": "Linnaeus, 1758",
+                        "date_created": "2024-11-17T00:37:27.071000Z",
+                        "date_modified": "2024-11-17T00:37:27.071000Z"
+                    }
+                }
+            }
+        },
+        {
+            "id": 140,
+            "name": "Papilionini",
+            "common_name": null,
+            "authority": "Kirby, 1896",
+            "date_created": "2025-06-14T19:50:22.390000Z",
+            "date_modified": "2026-01-19T01:39:14.458224Z",
+            "subfamily": {
+                "id": 85,
+                "name": "Papilioninae",
+                "common_name": "Swallowtails",
+                "authority": "Latreille, [1802]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:38:59.945218Z",
+                "family": {
+                    "id": 45,
+                    "name": "Papilionidae",
+                    "common_name": "Swallowtails and Parnassians",
+                    "authority": "Latreille, [1802]",
+                    "date_created": "2024-11-17T00:37:47.482000Z",
+                    "date_modified": "2025-07-20T04:56:11.176000Z",
+                    "order": {
+                        "id": 7,
+                        "name": "Lepidoptera",
+                        "common_name": "Butterflies and Moths",
+                        "authority": "Linnaeus, 1758",
+                        "date_created": "2024-11-17T00:37:27.071000Z",
+                        "date_modified": "2024-11-17T00:37:27.071000Z"
+                    }
+                }
+            }
+        },
+        {
+            "id": 141,
+            "name": "Parnassiini",
+            "common_name": null,
+            "authority": "Duponchel, [1835]",
+            "date_created": "2025-06-14T19:50:22.390000Z",
+            "date_modified": "2026-01-19T01:39:14.458224Z",
+            "subfamily": {
+                "id": 86,
+                "name": "Parnassiinae",
+                "common_name": "Parnassians",
+                "authority": "Duponchel, [1835]",
+                "date_created": "2025-06-14T19:50:22.390000Z",
+                "date_modified": "2026-01-19T01:35:12.661982Z",
+                "family": {
+                    "id": 45,
+                    "name": "Papilionidae",
+                    "common_name": "Swallowtails and Parnassians",
+                    "authority": "Latreille, [1802]",
+                    "date_created": "2024-11-17T00:37:47.482000Z",
+                    "date_modified": "2025-07-20T04:56:11.176000Z",
+                    "order": {
+                        "id": 7,
+                        "name": "Lepidoptera",
+                        "common_name": "Butterflies and Moths",
+                        "authority": "Linnaeus, 1758",
+                        "date_created": "2024-11-17T00:37:27.071000Z",
+                        "date_modified": "2024-11-17T00:37:27.071000Z"
+                    }
+                }
+            }
+        }
+    ]
+}
