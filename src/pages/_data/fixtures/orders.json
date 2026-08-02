@@ -4,7 +4,7 @@
     },
     "items": [
         {
-            "id": 1,
+            "id": 2,
             "name": "Coleoptera",
             "common_name": "Beetles",
             "authority": "Linnaeus, 1758",
@@ -12,7 +12,7 @@
             "date_modified": "2025-06-14T02:07:42.179000Z"
         },
         {
-            "id": 2,
+            "id": 6,
             "name": "Hymenoptera",
             "common_name": "Bees, Wasps, and Ants",
             "authority": "Linnaeus, 1758",
@@ -20,7 +20,7 @@
             "date_modified": "2025-06-14T02:08:57.039000Z"
         },
         {
-            "id": 3,
+            "id": 7,
             "name": "Lepidoptera",
             "common_name": "Butterflies and Moths",
             "authority": "Linnaeus, 1758",
