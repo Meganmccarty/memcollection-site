@@ -43,7 +43,7 @@
     "not supports es6-module"
   ],
   "dependencies": {
-    "@11ty/eleventy-fetch": "^5.1.1",
+    "@11ty/eleventy-fetch": "^5.1.3",
     "accessible-autocomplete": "^3.0.1",
     "cypress": "^15.19.0",
     "cypress-axe": "^1.7.0",
