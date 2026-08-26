@@ -37,7 +37,13 @@ export interface SpeciesPage {
         authority: string,
         mona?: string,
         p3?: string,
-        ps?: string
+        ps?: string,
+        featured_image?: {
+            alt_text: string,
+            thumbnail: {
+                file: string,
+            },
+        },
     },
     subspecies: {
         name: string,

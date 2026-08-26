@@ -16,7 +16,6 @@ ul.taxonomy-list {
         border: 0.125rem solid var(--w-color-border-furniture);
         border-radius: 0.25rem;
         margin: 0.25rem;
-        min-height: 14.75rem;
         width: 13.5rem;
 
         a {
@@ -26,7 +25,7 @@ ul.taxonomy-list {
             flex-direction: column;
             font-size: 1.0625rem;
             height: 100%;
-            min-height: 14.75rem;
+            min-height: 13rem;
             justify-content: flex-start;
             text-decoration: none;
 
@@ -41,9 +40,14 @@ ul.taxonomy-list {
                 }
             }
 
+            img {
+                margin: 0 0 0.75rem;
+                width: 100%;
+            }
+
             svg {
                 height: auto;
-                margin: 0.75rem 0;
+                margin: 0 0 0.75rem;
                 width: 13.5rem;
             }
 
