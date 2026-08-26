@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
-    "@11ty/eleventy-server-browsersync": "^1.0.2",
+    "@11ty/eleventy-server-browsersync": "^2.0.0",
     "@babel/core": "^7.29.7",
     "@babel/preset-env": "^7.29.7",
     "@babel/preset-typescript": "^7.28.5",
