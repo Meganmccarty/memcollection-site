@@ -17,6 +17,9 @@ permalink: "/orders/{{ order.name.toLowerCase() }}/"
 ---
 
 <h1>{{ order.name }} {{ order.authority }} – {{ order.common_name }}</h1>
+<div class="breadcrumbs">
+    <a href="/orders">Orders</a> / {{ order.name }}
+</div>
 <p class="hide" id="empty-taxon">There are no family pages in this order.</p>
 
 <span id="family-list-label" hidden>Families</span>
@@ -25,12 +28,16 @@ permalink: "/orders/{{ order.name.toLowerCase() }}/"
         {% if family.order.name === order.name %}
             <li>
                 <a href="/orders/{{ order.name.toLowerCase() }}/{{ family.name.toLowerCase() }}/">
-                    {% set featuredImage = insectImages | findFeaturedByFamily(family.name) %}
-                    {% if featuredImage %}
-                        <img alt="{{ featuredImage.alt_text }}" src="{{ featuredImage.file }}" />
-                    {% else %}
-                        {% include "placeholder.njk" %}
-                    {% endif %}
+                    <div>
+                        {% if family.featured_image %}
+                            <img
+                                src="{{ family.featured_image.thumbnail.file }}"
+                                alt="{{ family.featured_image.alt_text }}"
+                            />
+                        {% else %}
+                            {% include "placeholder.njk" %}
+                        {% endif %}
+                    </div>
                     <span class="taxon-name">{{ family.name }}</span>
                 </a>
             </li>

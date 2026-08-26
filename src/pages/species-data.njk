@@ -36,7 +36,13 @@ permalink: "/species-data.js"
             "common_name": "{{ page.species.common_name | safe }}",{% if page.species.mona %}
             "mona": "{{ page.species.mona | safe }}",{% endif %}{% if page.species.p3 %}
             "p3": "{{ page.species.p3 | safe }}",{% endif %}{% if page.species.ps %}
-            "ps": "{{ page.species.ps | safe }}",{% endif %}
+            "ps": "{{ page.species.ps | safe }}",{% endif %}{% if page.species.featured_image %}
+            "featured_image": {
+                "alt_text": "{{ page.species.featured_image.alt_text }}",
+                "thumbnail": {
+                    "file": "{{ page.species.featured_image.thumbnail.file }}"
+                }
+            },{% endif %}
             "authority": "{{ page.species.authority | safe }}"
         },
         "subspecies": [{% for subspecies in page.subspecies %}

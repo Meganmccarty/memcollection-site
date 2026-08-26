@@ -22,6 +22,10 @@ permalink: "/orders/{{ page.order.name.toLowerCase() }}/{{ page.family.name.toLo
         – {{ page.species.common_name }}
     {% endif %}
 </h1>
+<div class="breadcrumbs">
+    <a href="/orders">Orders</a> / <a href="/orders/{{ page.order.name }}">{{ page.order.name }}</a> / <a href="/orders/{{ page.order.name }}/{{ page.family.name }}">{{ page.family.name }}</a> / {{ page.species.binomial }}
+</div>
+
 
 <!--
 {% set featuredImage = insectImages | findFeaturedBySpecies(page.title) %}
