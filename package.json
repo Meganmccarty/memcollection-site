@@ -54,7 +54,7 @@
     "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-server-browsersync": "^2.0.0",
     "@babel/core": "^7.29.7",
-    "@babel/preset-env": "^7.29.7",
+    "@babel/preset-env": "^8.0.2",
     "@babel/preset-typescript": "^7.28.5",
     "@jest/globals": "^30.4.1",
     "@types/jest": "^30.0.0",
